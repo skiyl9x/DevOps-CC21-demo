@@ -1,0 +1,8 @@
+
+ste=php/Dockerfile
+          for i in $ste
+          do
+            tag=`echo $i | awk -F "/" '{print $1}'`":las"
+            echo $tag
+          done
+
