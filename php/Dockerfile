@@ -4,3 +4,4 @@ RUN apt-get update && \
     docker-php-ext-install mysqli gd curl dom exif fileinfo json mbstring xml zip && \
     docker-php-ext-enable mysqli gd curl dom exif fileinfo json mbstring xml zip
 ada
+asd
