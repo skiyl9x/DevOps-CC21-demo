@@ -33,9 +33,10 @@ jobs:
       -
         name: Build and push images
         run: |
-          for i in ${{ steps.getfile.outputs.files }}
+          for path in ${{ steps.getfile.outputs.files }}
           do
-            tag="l9xhub/"`echo $i| awk -F "/" '{print $1}'`":latest";
-            echo $tag
+            tag="${{ secrets.DOCKERHUB_USERNAME }}/"`echo $i| awk -F "/" '{print $1}'`":latest";
+            docker build -t $tag $path
+            docker pull $tag
           done
 
