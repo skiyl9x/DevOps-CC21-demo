@@ -8,6 +8,8 @@ on:
   push:
     paths:
       - '*/Dockerfile'
+env:
+  DOCKER_REG: "l9xhub"
 
 jobs:
 
@@ -36,7 +38,7 @@ jobs:
           for path in ${{ steps.getfile.outputs.files }}
           do
             dir=`dirname $path`
-            tag="l9xhub/$dir:latest"
+            tag="$DOCKER_REG/$dir:latest"
             docker build -t $tag $dir
           done
 
