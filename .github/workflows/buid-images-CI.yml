@@ -13,8 +13,6 @@ jobs:
 
   get-dockerfile-list:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       -
         name: Checkout git
@@ -23,10 +21,16 @@ jobs:
           fetch-depth: 0
       -
         name: Get changed files
-        id: set-matrix
+        id: getfile
         run: |
           echo "::set-output name=matrix::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep Dockerfile | xargs )"
-        
+      - 
+        name: set-matrix
+        run: |
+          for i in ${{ steps.getfile.outputs.files }}
+          do
+              echo "::add-matrix name=files::$i"
+          done
 
   docker-build-images:
     needs: [ get-dockerfile-list ]
@@ -36,12 +40,6 @@ jobs:
       - 
         name: Checkout git
         uses: actions/checkout@v2
-      - 
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
       -
         name: Login to DockerHub
         uses: docker/login-action@v1
@@ -49,9 +47,5 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - 
-        name: Build and push 
-        uses: docker/build-push-action@v2
-        with:
-          context: php/
-          push: true
-          tags: l9xhub/php:latest
+        name: Build and push
+
