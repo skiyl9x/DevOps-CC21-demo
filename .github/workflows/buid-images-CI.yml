@@ -37,7 +37,7 @@ jobs:
         run: |
           for i in ${{ steps.getfile.outputs.files }}
           do
-            tag=$DOCKER_REG`echo $i| awk -F "/" '{print $1}'`":latest"
+            tag="$DOCKER_REG/"`echo $i| awk -F "/" '{print $1}'`":latest"
             echo $tag
           done
 
