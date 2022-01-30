@@ -35,7 +35,7 @@ jobs:
         run: |
           for i in ${{ steps.getfile.outputs.files }}
           do
-            tag=`echo $i| awk -F "/" '{print $1}'`":latest"
+            tag=${{ secrets.DOCKERHUB_USERNAME }}`echo $i| awk -F "/" '{print $1}'`":latest"
             echo $tag
           done
 
