@@ -37,6 +37,6 @@ jobs:
           do
 
             tag="l9xhub/"`echo $path | awk -F "/" '{print $1}'`":latest";
-            docker build -t $tag $path
+            docker build -t $tag ./$path
           done
 
