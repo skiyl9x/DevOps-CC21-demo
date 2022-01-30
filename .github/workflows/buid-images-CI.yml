@@ -36,16 +36,14 @@ jobs:
           GREEN='\033[0;32m'
           NC='\033[0m'
 
-          for path in ${{ steps.getfile.outputs.files }}
+          for PATH in ${{ steps.getfile.outputs.files }}
           do
-            dir=`dirname $path`
-            tag="${{ secrets.DOCKERHUB_USERNAME }}/$dir:latest"
-            printf "${GREEN}* Build image $dir${NC}\n"
-            docker build -t $tag $dir
-            printf "${GREEN}* Image has built successfully{NC}\n"
-            printf "${GREEN}* Push image $dir to docker-hub registry${NC}\n"
+            NAME=`dirname $PATH`
+            TAG="${{ secrets.DOCKERHUB_USERNAME }}/$NAME:latest"
+            docker build -t $TAG $NAME
+            printf "${GREEN}* Image $NAME  has built successfully${NC}\n"
             docker push $tag
-            printf "${GREEN}* Image has pushed successfully{NC}\n"
+            printf "${GREEN}* Image $NAME has pushed successfully${NC}\n"
 
           done
 
