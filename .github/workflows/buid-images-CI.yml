@@ -35,8 +35,7 @@ jobs:
         run: |
           for path in ${{ steps.getfile.outputs.files }}
           do
-            tag="${{ secrets.DOCKERHUB_USERNAME }}/"`echo $i| awk -F "/" '{print $1}'`":latest";
+            tag=`echo $i| awk -F "/" '{print $1}'`":latest";
             docker build -t $tag $path
-            docker pull $tag
           done
 
