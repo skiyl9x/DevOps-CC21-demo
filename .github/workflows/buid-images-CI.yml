@@ -9,7 +9,7 @@ on:
     paths:
       - '*/Dockerfile'
 env:
-  DOCKER_REG: l9xhub
+  DOCKER_REG: "l9xhub"
 
 jobs:
 
