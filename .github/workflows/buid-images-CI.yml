@@ -8,8 +8,6 @@ on:
   push:
     paths:
       - '*/Dockerfile'
-env:
-  reg: "l9xhub"
 
 jobs:
 
@@ -37,8 +35,7 @@ jobs:
         run: |
           for i in ${{ steps.getfile.outputs.files }}
           do
-            echo "${{env.reg}}";
-            tag="$reg/"`echo $i| awk -F "/" '{print $1}'`":latest";
+            tag="l9xhub/"`echo $i| awk -F "/" '{print $1}'`":latest";
             echo $tag
           done
 
