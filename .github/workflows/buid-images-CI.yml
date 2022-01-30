@@ -36,7 +36,9 @@ jobs:
           do
             dir=`dirname $path`
             tag="${{ secrets.DOCKERHUB_USERNAME }}/$dir:latest"
+            echo "Build image $dir"
             docker build -t $tag $dir
+            echo "Push image $dit to registry"
             docker push $tag
           done
 
