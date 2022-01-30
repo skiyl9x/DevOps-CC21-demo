@@ -11,7 +11,7 @@ on:
 
 jobs:
 
-  build-and-push-images
+  build-and-push-images:
     runs-on: ubuntu-latest
     steps:
       -
