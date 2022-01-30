@@ -11,9 +11,10 @@ on:
 
 jobs:
 
-  get-docker-files:
+  get-dockerfile-list:
     runs-on: ubuntu-latest
-
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       -
         name: Checkout git
@@ -22,9 +23,9 @@ jobs:
           fetch-depth: 0
       -
         name: Get changed files
-        id: getfile
+        id: set-matrix
         run: |
-          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep Dockerfile | xargs )"
+          echo "::set-output name=matrix::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep Dockerfile | xargs )"
         
 
   docker-build-images:
