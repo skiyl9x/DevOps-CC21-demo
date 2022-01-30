@@ -30,4 +30,5 @@ jobs:
           do
               echo $i
           done
+          ls -lah
 
