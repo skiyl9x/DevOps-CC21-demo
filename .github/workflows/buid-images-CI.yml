@@ -28,9 +28,6 @@ jobs:
   build-and-push-images:
     needs: [ get-dockerfile-list ]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        file: ${{ steps.collect_apps.matrix }}
 
     steps:
       - 
