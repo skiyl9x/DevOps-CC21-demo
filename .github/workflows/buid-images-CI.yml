@@ -40,6 +40,6 @@ jobs:
             dir=`dirname $path`
             tag="$DOCKER_REG/$dir:latest"
             docker build -t $tag $dir
-            docker pull $tag
+            docker push $tag
           done
 
