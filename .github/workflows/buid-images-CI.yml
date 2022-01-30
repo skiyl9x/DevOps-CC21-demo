@@ -22,7 +22,7 @@ jobs:
       - name: get changed files
         id: getfile
         run: |
-          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }}| xargs)"
+          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r Dockerfile | xargs)"
 
       - name: echo the changed files
         run: |
@@ -30,5 +30,3 @@ jobs:
           do
               echo $i | grep Dockerfile
           done
-          ls -lah
-
