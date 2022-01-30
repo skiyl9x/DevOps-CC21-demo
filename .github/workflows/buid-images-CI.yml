@@ -14,18 +14,19 @@ jobs:
   build-and-push-images:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout git
+      - name: Checkout git
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      -
-        name: Get changed files
+          
+      - name: Get changed files
         id: getfile
         run: |
-          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep Dockerfile | xargs )"
-      -
-        name: Login to DockerHub
+          echo "::set-output name=files::$(git diff-tree \
+          --no-commit-id --name-only -r ${{ github.sha }}\
+          | grep Dockerfile | xargs )"
+      
+      - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
