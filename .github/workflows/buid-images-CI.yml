@@ -9,7 +9,7 @@ on:
     paths:
       - '*/Dockerfile'
 env:
-  DOCKER_REG: "l9xhub"
+  reg: "l9xhub"
 
 jobs:
 
@@ -37,8 +37,8 @@ jobs:
         run: |
           for i in ${{ steps.getfile.outputs.files }}
           do
-            echo "${{env.DOCKER_REG}}";
-            tag="$DOCKER_REG/"`echo $i| awk -F "/" '{print $1}'`":latest";
+            echo "${{env.reg}}";
+            tag="$reg/"`echo $i| awk -F "/" '{print $1}'`":latest";
             echo $tag
           done
 
