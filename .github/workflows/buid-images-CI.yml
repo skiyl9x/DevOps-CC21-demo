@@ -22,7 +22,7 @@ jobs:
       - name: get changed files
         id: getfile
         run: |
-          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r Dockerfile | xargs)"
+          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r Dockerfile | xargs | grep Dockerfile )"
 
       - name: echo the changed files
         run: |
