@@ -1,11 +1,7 @@
 name: 'Terraform'
 
 on:
-  push:
-    branches:
-    - main
-    paths:
-    - 'terraform/*.tf'
+  workflow_dispatch:
 
 
 jobs:
