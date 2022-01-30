@@ -37,6 +37,6 @@ jobs:
           do
             dir=`dirname $path`
             tag="l9xhub/$dir:latest"
-            docker build -t $dir
+            docker build -t $tag $dir
           done
 
