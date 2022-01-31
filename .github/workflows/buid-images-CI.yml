@@ -42,7 +42,7 @@ jobs:
             name=`dirname $path`
             tag="${{ secrets.DOCKERHUB_USERNAME }}/$name:latest"
             docker build -t $tag $name
-            printf "${GREEN}* Image $name  has built successfully${NC}\n"
+            printf "${GREEN}* Image $name has built successfully${NC}\n"
             docker push $tag
             printf "${GREEN}* Image $name has pushed successfully${NC}\n"
 
