@@ -1,6 +1,7 @@
 name: 'Terraform'
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -50,4 +51,4 @@ jobs:
 
     # Change infrastructure according to Terraform configuration files
     - name: Terraform Apply
-      run: terraform destroy -auto-approve
+      run: terraform apply -auto-approve
