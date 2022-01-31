@@ -12,14 +12,12 @@ provider "aws" {
   region = var.region
 }
 
-
 resource "random_password" "list" {
-  count   = 2
-  length  = 16
-  special = true
+  count            = 2
+  length           = 16
+  special          = true
   override_special = "!@$&"
 }
-
 
 resource "aws_secretsmanager_secret" "db_master" {
   name_prefix = "db_master-"
