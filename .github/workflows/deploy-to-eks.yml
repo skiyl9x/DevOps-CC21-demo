@@ -31,8 +31,7 @@ jobs:
       
     - name: Login to Amazon ECR
       run: |
-        cd terraform && terraform init && terraform output && cd ../
-        aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
+        cd terraform && terraform init && aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name) && cd ../
         kubectl get nodes
       
 
