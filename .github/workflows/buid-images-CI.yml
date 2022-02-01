@@ -7,6 +7,8 @@ on:
   push:
     branches:    
       - 'dev'
+    paths:
+      - '*/Dockerfile'
     
 jobs:
 
@@ -35,7 +37,6 @@ jobs:
         run: |
           GREEN='\033[0;32m'
           NC='\033[0m'
-
           for path in ${{ steps.getfile.outputs.files }}
           do
             name=`dirname $path`
@@ -44,6 +45,5 @@ jobs:
             printf "${GREEN}* Image $name has built successfully${NC}\n"
             docker push $tag
             printf "${GREEN}* Image $name has pushed successfully${NC}\n"
-
           done
 
