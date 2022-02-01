@@ -9,7 +9,7 @@ on:
     branches:
       - dev
     paths:
-      - 'php/Dockerfile'
+      - 'php7-fpm/Dockerfile'
       
 jobs:
 
