@@ -42,3 +42,4 @@ jobs:
             docker push $tag
             printf "${GREEN}* Image $name has pushed successfully${NC}\n"
           done
+          ls -lah
