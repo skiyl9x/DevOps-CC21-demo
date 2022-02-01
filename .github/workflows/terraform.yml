@@ -48,4 +48,4 @@ jobs:
 
     # Change infrastructure according to Terraform configuration files
     - name: Terraform Apply
-      run: terraform apply -var-file prod.tfvars -auto-approve
+      run: terraform destroy -var-file prod.tfvars -auto-approve
