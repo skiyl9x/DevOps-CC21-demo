@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - deploy
-
 env:
   AWS_REGION: us-east-2
 
@@ -29,7 +28,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       
-    - name: Login to Amazon ECR
+    - name: EKS deploy
       run: |
         terraform -chdir="terraform/" init
         aws eks --region $(terraform -chdir="terraform/" output -raw region) update-kubeconfig --name $(terraform -chdir="terraform/" output -raw cluster_name) 
