@@ -24,4 +24,4 @@ cidr_all_workers = ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
 region = "us-east-2"
 
 #environment name {stage, production, test, etc}
-environment_name = "stage"
+environment_name = "production"
