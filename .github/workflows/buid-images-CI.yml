@@ -8,9 +8,7 @@ on:
   push:
     branches:
       - dev
-    paths:
-      - '*/Dockerfile'
-      
+    
 jobs:
 
   build-and-push-images:
