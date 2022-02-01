@@ -7,7 +7,7 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: main
+    environment: staging
 
     defaults:
       run:
