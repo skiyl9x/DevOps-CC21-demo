@@ -1,5 +1,5 @@
 #
-# Here is terraform backend. s3 bucket with mongodb 
+# Terraform backend. s3 bucket with dynamodb 
 #
 
 terraform {
