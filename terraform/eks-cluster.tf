@@ -1,3 +1,7 @@
+#
+# EKS in AWS
+#
+
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   version         = "17.24.0"
@@ -27,12 +31,4 @@ module "eks" {
       asg_desired_capacity          = 1
     },
   ]
-}
-
-data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_id
-}
-
-data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_id
 }

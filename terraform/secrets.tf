@@ -3,14 +3,6 @@
 #
 #
 
-variable "region" {
-  default     = "us-east-2"
-  description = "AWS region"
-}
-
-provider "aws" {
-  region = var.region
-}
 
 resource "random_password" "list" {
   count            = 2
@@ -18,6 +10,10 @@ resource "random_password" "list" {
   special          = true
   override_special = "!@$&"
 }
+
+#
+# Here are secrets in AWS
+#
 
 resource "aws_secretsmanager_secret" "db_master" {
   name_prefix = "db_master-"

@@ -1,3 +1,7 @@
+#
+# Here is versions if terraform resourses
+#
+
 terraform {
   required_providers {
     aws = {
