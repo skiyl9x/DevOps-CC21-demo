@@ -21,4 +21,4 @@ jobs:
       run: |
         echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 -d > /tmp/config
         KUBECONFIG=/tmp/config
-        ls $HOME/.kube
+        kubectl cluster-info
