@@ -8,8 +8,7 @@ on:
   push:
     branches:
       - dev
-    paths:
-      - '*/Dockerfile'
+
 
 jobs:
 
