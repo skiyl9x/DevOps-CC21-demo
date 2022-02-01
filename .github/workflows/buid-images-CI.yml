@@ -8,8 +8,8 @@ on:
   push:
     branches:
       - dev
-
-
+    paths:
+      
 jobs:
 
   build-and-push-images:
