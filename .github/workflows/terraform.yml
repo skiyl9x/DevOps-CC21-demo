@@ -44,9 +44,7 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: |
-        aws sts get-caller-identity
-        terraform plan
+      run: terraform plan
 
     # Change infrastructure according to Terraform configuration files
     - name: Terraform Apply
