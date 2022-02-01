@@ -19,6 +19,6 @@ jobs:
       
     - name: KUBE_CONFIG setup
       run: |
-        echo ${{ secrets.KUBE_CONFIG_DATA }} | base64 -d > /tmp/config
+        echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 -d > /tmp/config
         KUBECONFIG=/tmp/config
-        kubectl get nodes
+        #kubectl get nodes
