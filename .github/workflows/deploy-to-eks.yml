@@ -24,12 +24,8 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
       
-    # Install the latest version of Terraform CLI
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      
-    - name: EKS deploy
+    - name: KUBE_CONFIG setup
       run: |
-        terraform -chdir="terraform/" init
-        aws eks --region $(terraform -chdir="terraform/" output -raw region) update-kubeconfig --name $(terraform -chdir="terraform/" output -raw cluster_name) 
+        echo ${{ secrets.KUBE_CONFIG_DATA }} | base64 -d > /tmp/config
+        export KUBECONFIG=/tmp/config
         kubectl get nodes
