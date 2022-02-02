@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function error {
   echo -e "\nERROR: $1";
   exit 1;

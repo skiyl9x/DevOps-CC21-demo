@@ -16,7 +16,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
+      
     - name: kubectl version
       uses: skiyl9x/kubectl-aws-eks@master
       env:
