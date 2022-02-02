@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - deploy
-
 env:
   AWS_REGION: us-east-2
 
@@ -25,15 +24,19 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
       
-    # Install the latest version of Terraform CLI
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
+    - name: deploy to EKS
+      uses: skiyl9x/kubectl-aws-eks@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+      with:
+        args: apply -f k8s
+        
+    - name: Waiting run pods
+      run: sleep 300
       
-    - name: Login to Amazon ECR
-      run: |
-        terraform -chdir="terraform/" init
-        aws eks --region $(terraform -chdir="terraform/" output -raw region) update-kubeconfig --name $(terraform -chdir="terraform/" output -raw cluster_name) 
-        kubectl get nodes
-      
-
-  
+    - name: Deployment status
+      uses: skiyl9x/kubectl-aws-eks@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+      with:
+        args: get deploy --output name | xargs -n1 -t kubectl rollout status
