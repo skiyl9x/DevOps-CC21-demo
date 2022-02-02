@@ -38,8 +38,8 @@ jobs:
       with:
         args: apply -f k8s
     
-    - name: check
-      run: kubectl get pods
+    - name: Waiting run pods
+      run: sleep 300
       
     - name: Deployment status
       uses: skiyl9x/kubectl-aws-eks@master
