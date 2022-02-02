@@ -37,6 +37,9 @@ jobs:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
         args: apply -f k8s
+    
+    - name: check
+      run: kubectl get pods
       
     - name: Deployment status
       uses: skiyl9x/kubectl-aws-eks@master
@@ -44,3 +47,5 @@ jobs:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
         args: get deploy --output name | xargs -n1 -t kubectl rollout status
+    
+  
