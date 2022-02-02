@@ -1,0 +1,25 @@
+name: Deploy to Amazon EKS
+
+on:
+  push:
+    branches:
+      - deploy
+env:
+  AWS_REGION: us-east-2
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: kubectl version
+      uses: skiyl9x/kubectl-aws-eks@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+      with:
+        args: version
