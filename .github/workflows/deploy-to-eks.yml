@@ -1,9 +1,9 @@
 name: Deploy on staging
 
 on:
-      
   workflow_run:
-    workflows: ["buid-images-CI"]
+    workflows: 
+      - "buid-images-CI"
     types:
       - completed
     
