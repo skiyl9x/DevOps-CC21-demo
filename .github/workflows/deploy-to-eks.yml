@@ -6,7 +6,7 @@ on:
       - deploy
       
   workflow_run:
-    workflows: ["CI build"]
+    workflows: ["buid-images-CI"]
     types:
       - completed
     
