@@ -24,13 +24,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
       
-    - name: deploy to EKS
-      uses: skiyl9x/kubectl-aws-eks@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-      with:
-        args: apply -f k8s
-        
+    - name: check helm
+      run: helm version
+      
     - name: deploy to EKS
       uses: skiyl9x/kubectl-aws-eks@master
       env:
