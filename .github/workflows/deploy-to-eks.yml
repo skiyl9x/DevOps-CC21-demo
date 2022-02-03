@@ -3,9 +3,10 @@ name: Deploy on staging
 on:
       
   workflow_run:
-    workflows: ["buid-images-CI"]
-    types:
-      - completed
+    workflows: [buid-images-CI]
+    types: [completed]
+    branches: [dev]
+
     
 env:
   AWS_REGION: us-east-2
