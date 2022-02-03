@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - deploy
+      
+  workflow_run:
+    workflows: ["CI build"]
+    types:
+      - completed
+    
 env:
   AWS_REGION: us-east-2
 
