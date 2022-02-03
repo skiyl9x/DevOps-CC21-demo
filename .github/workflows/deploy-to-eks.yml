@@ -39,4 +39,4 @@ jobs:
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
-        args: get deploy --output name | xargs -n1 -t kubectl rollout status
+        args: get deploy --namespace=lemp --output name | xargs -n1 -t kubectl rollout status --namespace=lemp
