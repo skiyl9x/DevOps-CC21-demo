@@ -6,8 +6,13 @@ on:
     workflows: [buid-images-CI]
     types: [completed]
     branches: [dev]
+<<<<<<< HEAD
 
     
+=======
+  workflow_dispatch:
+
+>>>>>>> deploy
 env:
   AWS_REGION: us-east-2
 
@@ -27,33 +32,26 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
-      
+
+    - name: Add kubeconfig
+      run: |
+        echo "$KUBE_CONFIG_DATA" | base64 -d > $HOME/.kube/config
+        
     - name: deploy to EKS
-      uses: skiyl9x/kubectl-aws-eks@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-      with:
-        args: apply -f k8s
+      run: kubectl apply -f k8s
         
     - name: Waiting run pods
       run: sleep 300
       
     - name: Deployment status
-      uses: skiyl9x/kubectl-aws-eks@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-      with:
-        args: get deploy --namespace=lemp --output name | xargs -n1 -t kubectl rollout status --namespace=lemp
-    
+      run: kubectl get deploy --namespace=lemp --output name | xargs -n1 -t kubectl rollout status --namespace=lemp
+
     - uses: actions/checkout@v2
       with:
        ref: dev
-     
-    - name: Copy site data from dev branch
-      uses: skiyl9x/kubectl-aws-eks@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-      with:
-        args: pod_name=`kubectl get pod --namespace=lemp -l run=nginx -o jsonpath="{.items[0].metadata.name}"` && \
-              kubectl cp data/site lemp/$pod_name:/ && \
-              kubectl exec -i  --namespace=lemp $pod_name -- chown -R www-data:www-data /site
+    
+    - name: Copy data
+      run: |
+            kubectl pod_name=`kubectl get pod --namespace=lemp -l run=nginx -o jsonpath="{.items[0].metadata.name}"` && \
+            kubectl cp data/site lemp/$pod_name:/ && \
+            kubectl exec -i  --namespace=lemp $pod_name -- chown -R www-data:www-data /site

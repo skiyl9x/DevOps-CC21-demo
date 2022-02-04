@@ -42,26 +42,26 @@ spec:
   selector:
     matchLabels:
       run: nginx
-  replicas: 1 # tells deployment to run 2 pods matching the template
+  replicas: 3 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
         run: nginx
     spec:
       containers:
-      - name: nginx
-        image: l9xhub/nginx:latest
-        volumeMounts:
-        - mountPath: "/site"
-          name: hostpath-privileged
-        - mountPath: /var/log/nginx
-          name: logs-volume
-        - name: nginx-conf
-          mountPath: /etc/nginx/conf.d/wordpress.conf
-          subPath: wordpress.conf
-          readOnly: true
-        ports:
-          - containerPort: 80
+        - name: nginx
+          image: l9xhub/nginx:latest
+          volumeMounts:
+            - mountPath: "/site"
+              name: hostpath-privileged
+            - mountPath: /var/log/nginx
+              name: logs-volume
+            - name: nginx-conf
+              mountPath: /etc/nginx/conf.d/wordpress.conf
+              subPath: wordpress.conf
+              readOnly: true
+          ports:
+            - containerPort: 80
       volumes:
         - name: hostpath-privileged
           persistentVolumeClaim:
@@ -75,7 +75,7 @@ spec:
               - key: wordpress.conf
                 path: wordpress.conf
       imagePullSecrets:
-      - name: private-registry-cred
+        - name: private-registry-cred
 ---
 apiVersion: v1
 kind: Service
@@ -87,10 +87,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-    nodePort: 30001
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+      nodePort: 30001
   selector:
     run: nginx
 ---
