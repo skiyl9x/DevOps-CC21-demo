@@ -6,13 +6,9 @@ on:
     workflows: [buid-images-CI]
     types: [completed]
     branches: [dev]
-<<<<<<< HEAD
 
-    
-=======
   workflow_dispatch:
 
->>>>>>> deploy
 env:
   AWS_REGION: us-east-2
 
