@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - 'dev'
-  push:
-    branches:
-      - 'dev'
-    paths:
-      - '*/Dockerfile'
-      - 'data/**'
 jobs:
 
   build-CI:
