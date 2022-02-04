@@ -25,19 +25,16 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
       
-    - name: add helm repo
-      uses: skiyl9x/helm-aws-eks-action@v1
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-      with:
-        args: repo add prometheus-community https://prometheus-community.github.io/helm-charts
-              
     - name: deploy monitoring with helm
-      uses: skiyl9x/helm-aws-eks-action@v1
+      uses: skiyl9x/helm-aws-eks-action@v
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
-        args: install -f values.yaml prometheus prometheus-community/kube-prometheus-stack
+        body: |
+          |
+          My muti-line comment
+            - [ ] prometheus-community https://prometheus-community.github.io/helm-charts
+            - [ ] install -f values.yaml prometheus prometheus-community/kube-prometheus-stack
         
     - name: Waiting run pods
       run: sleep 300
