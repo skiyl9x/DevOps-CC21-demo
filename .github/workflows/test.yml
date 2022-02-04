@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  workflow_dispatch:
+    
+env:
+  AWS_REGION: us-east-2
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Update kubectl
+      run: |
+        kubectl version --client
+        curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+        chmod +x ./kubectl
+        sudo mv ./kubectl /usr/bin/kubectl
+        kubectl version --client

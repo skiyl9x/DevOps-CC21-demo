@@ -1,0 +1,53 @@
+name: Deploy monitoring
+
+on:
+  push:
+    branches:
+      - 'dev'
+      
+  workflow_dispatch:
+    
+env:
+  AWS_REGION: us-east-2
+
+jobs:
+  deploy_mon:
+    name: Deploy monitoring
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+       ref: mon
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+    - name: add repo helm
+      uses: skiyl9x/helm-aws-eks-action@v2
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+      with:
+        args: repo add prometheus-community https://prometheus-community.github.io/helm-charts 
+        
+    - name: deploy monitoring with helm
+      uses: skiyl9x/helm-aws-eks-action@v2
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+      with:
+        args: install prometheus prometheus-community/kube-prometheus-stack 
+        
+    - name: Waiting run pods
+      run: sleep 300
+      
+    - name: Deployment status
+      uses: skiyl9x/kubectl-aws-eks@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+      with:
+        args: get deploy --namespace=default --output name | xargs -n1 -t kubectl rollout status --namespace=default
