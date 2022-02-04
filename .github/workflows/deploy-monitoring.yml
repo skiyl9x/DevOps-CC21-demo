@@ -3,7 +3,7 @@ name: Deploy monitoring
 on:
   push:
     branches:
-      - 'dev'
+      - 'mon'
       
   workflow_dispatch:
     
