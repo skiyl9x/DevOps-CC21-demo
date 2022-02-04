@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deploy
+  namespace: lemp
+spec:
+  selector:
+    matchLabels:
+      run: mariadb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: mariadb
+    spec:
+      containers:
+      - name: mariadb
+        image: l9xhub/mariadb:latest
+        ports:
+          - containerPort: 3306
+            name: db-port
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: wp-mariadb-secret
+                key: password
+      imagePullSecrets:
+      - name: private-registry-cred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb
+  namespace: lemp
+  labels:
+    run: mariadb
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+  selector:
+    run: mariadb
+

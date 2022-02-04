@@ -1,0 +1,52 @@
+name: Deploy on staging
+
+on:
+      
+  workflow_run:
+    workflows: [buid-images-CI]
+    types: [completed]
+    branches: [dev]
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-2
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+      
+    - name: Add kubeconfig
+      run: |
+        echo "$KUBE_CONFIG_DATA" | base64 -d > $HOME/.kube/config
+        
+    - name: deploy to EKS
+      run: kubectl apply -f k8s
+        
+    - name: Waiting run pods
+      run: sleep 300
+      
+    - name: Deployment status
+      run: kubectl get deploy --namespace=lemp --output name | xargs -n1 -t kubectl rollout status --namespace=lemp
+
+    - uses: actions/checkout@v2
+      with:
+       ref: dev
+    
+    - name: Copy data
+      run: |
+            kubectl pod_name=`kubectl get pod --namespace=lemp -l run=nginx -o jsonpath="{.items[0].metadata.name}"` && \
+            kubectl cp data/site lemp/$pod_name:/ && \
+            kubectl exec -i  --namespace=lemp $pod_name -- chown -R www-data:www-data /site
