@@ -1,9 +1,13 @@
-name: Deploy to Amazon EKS
+name: Deploy on staging
 
 on:
-  push:
-    branches:
-      - deploy
+      
+  workflow_run:
+    workflows: [buid-images-CI]
+    types: [completed]
+    branches: [dev]
+
+    
 env:
   AWS_REGION: us-east-2
 
@@ -39,4 +43,17 @@ jobs:
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
-        args: get deploy --output name | xargs -n1 -t kubectl rollout status
+        args: get deploy --namespace=lemp --output name | xargs -n1 -t kubectl rollout status --namespace=lemp
+    
+    - uses: actions/checkout@v2
+      with:
+       ref: dev
+     
+    - name: Copy site data from dev branch
+      uses: skiyl9x/kubectl-aws-eks@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+      with:
+        args: pod_name=`kubectl get pod --namespace=lemp -l run=nginx -o jsonpath="{.items[0].metadata.name}"` && \
+              kubectl cp data/site lemp/$pod_name:/ && \
+              kubectl exec -i  --namespace=lemp $pod_name -- chown -R www-data:www-data /site

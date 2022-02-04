@@ -6,6 +6,7 @@ on:
       - 'dev'
     paths:
       - '*/Dockerfile'
+      - 'data/**'
 jobs:
 
   build-and-push-images:
