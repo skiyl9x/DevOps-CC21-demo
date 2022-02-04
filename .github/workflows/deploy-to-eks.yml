@@ -74,6 +74,6 @@ jobs:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
           command: |
-                  kubectl pod_name=`kubectl get pod --namespace=lemp -l run=nginx -o jsonpath="{.items[0].metadata.name}"` && \
+                  pod_name=`kubectl get pod --namespace=lemp -l run=nginx -o jsonpath="{.items[0].metadata.name}"` && \
                   kubectl cp data/site lemp/$pod_name:/ && \
                   kubectl exec -i  --namespace=lemp $pod_name -- chown -R www-data:www-data /site
