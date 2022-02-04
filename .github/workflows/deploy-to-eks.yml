@@ -1,6 +1,10 @@
 name: Deploy on staging
 
 on:
+ 
+  push:
+    branches:
+      - 'dev'
   workflow_run:
     workflows: [buid-images-CI]
     types: [completed]
