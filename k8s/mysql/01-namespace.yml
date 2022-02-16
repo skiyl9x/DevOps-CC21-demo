@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: lemp
+  name: database
   labels:
-    name: lemp
+    name: database
