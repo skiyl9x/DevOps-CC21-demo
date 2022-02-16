@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-upload
+  namespace: database
+  annotations:
+    vault.hashicorp.com/agent-inject: 'true'
+    vault.hashicorp.com/role: 'vault-mysql-ar'
+    vault.hashicorp.com/agent-inject-secret-cred: 'secret/wp/db/config'
+    vault.hashicorp.com/agent-inject-template-cred: | 
+        {{- with secret "secret/wp/db/config" -}}
+        HOST="mysql-set-0.mysql.database.svc.cluster.local"
+        MYSQL_DATABASE={{ .Data.data.MYSQL_DATABASE }}
+        MYSQL_USER={{ .Data.data.MYSQL_USER}}
+        MYSQL_PASSWORD={{ .Data.data.MYSQL_PASSWORD }}
+
+        #mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$HOST < 
+        {{- end -}}
+spec:
+  serviceAccountName: vault-mysql-sa
+  containers:
+  - name: mysql-container
+    image: imega/mysql-client
+    args:
+      ['sh', '-c', '. /vault/secrets/cred  && tail -f /dev/null']
+    imagePullPolicy: IfNotPresent

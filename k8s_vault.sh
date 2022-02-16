@@ -196,7 +196,7 @@ EOF
 }
 
 #generation patch file
-function gen_patch_file {
+function gen_mysql_config_file {
 
     echo -e "\n${YELLOW}* mysql-config.yml file generation${NC}"
     mysql_config_text=$(cat <<EOF
@@ -340,7 +340,7 @@ do
         allow_access_from_kubernetes)     allow_access_from_kubernetes;;
         add_vault_policy)                 add_vault_policy;;
         port-forward)                     kubectl port-forward vault-0 $PORT_FORWARD:8200;;
-        gen_patch_file)                   gen_patch_file;;
+        gen_mysql_config_file)            gen_mysql_config_file;;
         get_key_value)                    get_key_value;;
 
         all_steps)                        add_namespace && \
@@ -353,7 +353,7 @@ do
                                           gen_db_cred && add_new_key && \
                                           allow_access_from_kubernetes && \
                                           add_vault_policy && \
-                                          gen_patch_file;;
+                                          gen_mysql_config_file;;
 
         *)                                [[  ${args[0]}  != "add_new_key" ]] && printf "$usage\n" && exit 1;
         
