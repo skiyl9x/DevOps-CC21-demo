@@ -14,7 +14,7 @@ metadata:
         MYSQL_USER={{ .Data.data.MYSQL_USER}}
         MYSQL_PASSWORD={{ .Data.data.MYSQL_PASSWORD }}
 
-        mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$HOST 
+        mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$HOST $MYSQL_DATABASE
         {{- end -}}
 spec:
   serviceAccountName: vault-mysql-sa
