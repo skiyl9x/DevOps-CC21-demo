@@ -6,15 +6,15 @@ metadata:
   annotations:
     vault.hashicorp.com/agent-inject: 'true'
     vault.hashicorp.com/role: 'vault-mysql-ar'
-    vault.hashicorp.com/agent-inject-secret-cred: 'secret/wp/db/config'
-    vault.hashicorp.com/agent-inject-template-cred: | 
+    vault.hashicorp.com/agent-inject-secret-upload.sh: 'secret/wp/db/config'
+    vault.hashicorp.com/agent-inject-template-upload.sh: | 
         {{- with secret "secret/wp/db/config" -}}
         HOST="mysql-set-0.mysql.database.svc.cluster.local"
         MYSQL_DATABASE={{ .Data.data.MYSQL_DATABASE }}
         MYSQL_USER={{ .Data.data.MYSQL_USER}}
         MYSQL_PASSWORD={{ .Data.data.MYSQL_PASSWORD }}
 
-        #mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$HOST < 
+        mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$HOST 
         {{- end -}}
 spec:
   serviceAccountName: vault-mysql-sa
@@ -22,5 +22,5 @@ spec:
   - name: mysql-container
     image: imega/mysql-client
     args:
-      ['sh', '-c', '. /vault/secrets/cred  && tail -f /dev/null']
+      ['sh', '-c', 'tail -f /dev/null']
     imagePullPolicy: IfNotPresent
