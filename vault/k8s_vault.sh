@@ -40,29 +40,29 @@ function add_repos {
 #install consul via helm
 function install_consul {
     echo -e "\n${YELLOW}* Install consul with values from helm-consul-values.yml${NC}"
-    helm install consul hashicorp/consul --values helm-consul-values.yml
+    helm install -n $NAMESPACE consul hashicorp/consul --values helm-consul-values.yml
     
     echo -e "- Verify installation"
-    kubectl wait --timeout=180s --for=condition=Ready $(kubectl get pod --selector=app=consul -o name)
+    kubectl -n $NAMESPACE wait --timeout=180s --for=condition=Ready $(kubectl -n $NAMESPACE get pod --selector=app=consul -o name)
 }
 
 #install vault via helm
 function install_vault {
     echo -e "\n${YELLOW}* Install vault with values from helm-vault-values.yml${NC}"
-    helm install vault hashicorp/vault --values helm-vault-values.yml
+    helm -n $NAMESPACE install vault hashicorp/vault --values helm-vault-values.yml
     
     echo -e "- Verify installation"
-    kubectl wait --timeout=180s --for=condition=Ready $(kubectl get pod --selector=app.kubernetes.io/name=vault-agent-injector -o name)
+    kubectl -n $NAMESPACE wait --timeout=180s --for=condition=Ready $(kubectl get pod --selector=app.kubernetes.io/name=vault-agent-injector -o name)
 }
 
 #initialization vault
 function init_vault {
     
-    kubectl exec --stdin=true  --tty=true vault-0 -- vault operator  init -status 1> /dev/null
+    kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- vault operator  init -status 1> /dev/null
   
     if [ "$?" -ne "0" ]; then
       echo -e "\n${YELLOW}* Init vault${NC}"
-      kubectl exec vault-0 -- vault operator init -key-shares=1 -key-threshold=1 -format=json > cluster-keys.json
+      kubectl -n $NAMESPACE exec vault-0 -- vault operator init -key-shares=1 -key-threshold=1 -format=json > cluster-keys.json
       echo -e "- Vault keys have saved in cluster-keys.json.{NC}"
     else 
       echo -e "\nVault was already initialized"
@@ -77,9 +77,9 @@ function unseal_vaults  {
 
     for i in {0..2}; do
         echo -e "\n===============vault-$i==============="
-        kubectl exec --stdin=true  --tty=true vault-$i -- vault operator key-status > /dev/null 2>&1
+        kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-$i -- vault operator key-status > /dev/null 2>&1
         if [ "$?" -ne "0" ]; then
-            kubectl exec --stdin=true --tty=true vault-$i -- vault operator unseal $VAULT_UNSEAL_KEY
+            kubectl -n $NAMESPACE exec --stdin=true --tty=true vault-$i -- vault operator unseal $VAULT_UNSEAL_KEY
         else
             echo -e "\n* vault-$i has already unsealed${NC}"
         fi
@@ -91,11 +91,11 @@ function seal_vaults  {
     echo -e "\n${YELLOW}* Seal all vaults${NC}"
     for i in {0..2}; do
         echo -e "\n===============vault-$i==============="
-        kubectl exec --stdin=true  --tty=true vault-$i -- vault operator key-status > /dev/null 2>&1
+        kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-$i -- vault operator key-status > /dev/null 2>&1
         if [ "$?" -eq "0" ]; then
             vault_login $i
             sleep 6
-            kubectl exec --stdin=true --tty=true vault-$i -- vault operator seal
+            kubectl -n $NAMESPACE exec --stdin=true --tty=true vault-$i -- vault operator seal
         else
             echo -e "- vault-$i has already sealed"
         fi
@@ -110,7 +110,7 @@ function vault_login {
     VAULT_TOKEN=`cat cluster-keys.json | jq -r ".root_token"`
     
     echo -e "- Vault login"
-    kubectl exec --stdin=true --tty=true vault-$index -- vault login $VAULT_TOKEN 1>/dev/null
+    kubectl -n $NAMESPACE exec --stdin=true --tty=true vault-$index -- vault login $VAULT_TOKEN 1>/dev/null
 
 
 
@@ -120,10 +120,10 @@ function vault_login {
 function add_new_key {
 
     echo -e "\n${YELLOW}* Add new secret by PATH: $ROOT_DIR/$PATH_TO_SECRET/$SECRET${NC}"
-    kubectl exec --stdin=true  --tty=true vault-0 --  vault secrets list -format table  | awk '{print $1}' | grep "^$ROOT_DIR/" 1>/dev/null
+    kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 --  vault secrets list -format table  | awk '{print $1}' | grep "^$ROOT_DIR/" 1>/dev/null
     if [ "$?" -ne "0" ]; then
       echo -e "- create <root directory> for secrets\n"
-      kubectl exec --stdin=true  --tty=true vault-0 -- \
+      kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- \
       vault secrets enable -path=$ROOT_DIR kv-v2 
     else
       echo -e "- PATH: $ROOT_DIR/ exist in the vault"
@@ -141,7 +141,7 @@ function add_new_key {
 
 function get_key_value {
     echo -e "- Show created key"
-    kubectl exec --stdin=true  --tty=true vault-0 -- \
+    kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- \
     vault kv get $ROOT_DIR/$PATH_TO_SECRET/$SECRET
 }
 
@@ -156,14 +156,14 @@ function allow_access_from_kubernetes  {
     echo "issuer=$ISSUER"
     kill %%
 
-    kubectl exec --stdin=true  --tty=true vault-0 -- vault  auth list | awk '{print $1}' | grep "^kubernetes/" 1>/dev/null
+    kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- vault  auth list | awk '{print $1}' | grep "^kubernetes/" 1>/dev/null
     if [ "$?" -ne "0" ]; then
         echo -e "- Enable vault authentification to kubernetes"
-        kubectl exec --stdin=true  --tty=true vault-0 -- vault auth enable kubernetes
+        kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- vault auth enable kubernetes
     fi
 
     echo -e "- Vault add credentials with kubernetes cluster"  
-    kubectl exec --stdin=true  --tty=true vault-0 -- sh -c '
+    kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- sh -c '
     vault write auth/kubernetes/config \
     kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443" \
     token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" \
@@ -175,11 +175,11 @@ function allow_access_from_kubernetes  {
 function add_vault_policy  {
     
     echo -e "\n${YELLOW}* Add service account key${NC}"
-    kubectl create sa $SERVICE_ACCOUNT --namespace=$NAMESPACE_app
+    kubectl -n $NAMESPACE create sa $SERVICE_ACCOUNT --namespace=$NAMESPACE_app
 
 
     echo -e "- Create new policy for created secret"  
-    kubectl exec --stdin=true  --tty=true vault-0 -- \
+    kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- \
     vault policy write $POLICY_NAME - <<EOF
 path "$ROOT_DIR/*" {
   capabilities = ["read"]
@@ -187,7 +187,7 @@ path "$ROOT_DIR/*" {
 EOF
     
     echo -e "\n* Apply policy for kubernetes"  
-    kubectl exec --stdin=true  --tty=true vault-0 -- vault write auth/kubernetes/role/$ACCESS_ROLE \
+    kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- vault write auth/kubernetes/role/$ACCESS_ROLE \
     bound_service_account_names=$SERVICE_ACCOUNT \
     bound_service_account_namespaces=$NAMESPACE_app \
     policies=$POLICY_NAME \
