@@ -7,6 +7,8 @@ ROOT_DIR="secret" #name of root directory in kv-v2 vault
 PATH_TO_SECRET="wp/db" #path to secret in kv-v2 vault
 SECRET="config" #name of secret in kv-v2 vault
 CRED_JSON_STRING='' #credentials in json format. It will be generate via function gen_db_cred
+VAULT_KEYS=`cat cluster-keys.json` #credentials in json format. It will be generate via function init_vault
+
 
 GREEN='\033[0;32m'  
 NC='\033[0m'
@@ -59,7 +61,7 @@ function install_vault {
 function init_vault {
     
     kubectl -n $NAMESPACE exec --stdin=true  --tty=true vault-0 -- vault operator  init -status 1> /dev/null
-  
+
     if [ "$?" -ne "0" ]; then
       echo -e "\n${YELLOW}* Init vault${NC}"
       kubectl -n $NAMESPACE exec vault-0 -- vault operator init -key-shares=1 -key-threshold=1 -format=json > cluster-keys.json
@@ -73,7 +75,7 @@ function init_vault {
 function unseal_vaults  {
     echo -e "\n${YELLOW}* Unseal all vaults${NC}"
     echo -e "- Get vault unseal key"
-    VAULT_UNSEAL_KEY=$(cat cluster-keys.json | jq -r ".unseal_keys_b64[]")
+    VAULT_UNSEAL_KEY=$(echo $VAULT_KEYS | jq -r ".unseal_keys_b64[]")
 
     for i in {0..2}; do
         echo -e "\n===============vault-$i==============="
@@ -107,7 +109,7 @@ function vault_login {
 
     index=$1
     echo -e "\n${YELLOW}* Get root token${NC}"
-    VAULT_TOKEN=`cat cluster-keys.json | jq -r ".root_token"`
+    VAULT_TOKEN=`echo $VAULT_KEYS | jq -r ".root_token"`
     
     echo -e "- Vault login"
     kubectl -n $NAMESPACE exec --stdin=true --tty=true vault-$index -- vault login $VAULT_TOKEN 1>/dev/null
@@ -236,7 +238,6 @@ EOF
         mysql -uroot -p$MYSQL_ROOT_PASSWORD -h$HOST << EOF
         CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
         CREATE USER IF NOT EXISTS '$MYSQL_USER' @'%';
-        ALTER USER '$MYSQL_USER' @'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
         ALTER USER '$MYSQL_USER' @'%' IDENTIFIED BY '$MYSQL_PASSWORD';
         GRANT ALL PRIVILEGES ON $MYSQL_DATABASE . * TO '$MYSQL_USER' @'%';
         FLUSH PRIVILEGES;
@@ -305,7 +306,7 @@ allow_access_from_kubernetes    allow access from kubernetes
 add_vault_policy                add vault policy
 all_steps                       perform all steps
 port-forward                    enable port forwarding for vault
-gen_patch_file                  generate file with patch for injection
+gen_mysql_config_file           generate file with injection for mysql
 EOF
 )
 
