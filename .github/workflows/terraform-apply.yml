@@ -49,3 +49,13 @@ jobs:
     # Change infrastructure according to Terraform configuration files
     - name: Terraform Apply
       run: terraform apply -var-file prod.tfvars -auto-approve
+    
+    - name: Update KUBE_CONFIG_DATA_STAGING
+      run: |
+        aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name) --kubeconfig "kubeconfig"
+        ENCRYPTED_VALUE=`cat kubeconfig | base64`
+        rm -f kubeconfig
+        curl   -X PUT   -H "Accept: application/vnd.github.v3+json" \
+        -u skiyl9x:${{ secrets.PERSONAL_GITHUB_TOKEN }} \
+        https://api.github.com/repos/skiyl9x/DevOps-CC21-demo/actions/secrets/KUBE_CONFIG_DATA_STAGING \
+        -d '{"encrypted_value":"$ENCRYPTED_VALUE","key_id": "568250167242549743"}'
