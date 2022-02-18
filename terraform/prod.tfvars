@@ -25,3 +25,7 @@ region = "us-east-2"
 
 #environment name {stage, production, test, etc}
 environment_name = "production"
+
+#EC2 type
+worker_group_1_ec2_type = "t2.medium"
+worker_group_2_ec2_type = "t2.micro"

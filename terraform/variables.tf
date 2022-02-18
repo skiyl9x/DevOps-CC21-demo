@@ -44,3 +44,13 @@ variable "cidr_all_workers" {
 variable "environment_name" {
   type = string
 }
+
+variable "worker_group_1_ec2_type" {
+  type = string
+}
+
+variable "worker_group_2_ec2_type" {
+  type = string
+}
+
+
