@@ -1,11 +1,11 @@
-name: 'Terraform'
+name: 'Terraform-Destroy'
 
 on:
   workflow_dispatch:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Terraform-Destroy'
     runs-on: ubuntu-latest
     environment: staging
 
