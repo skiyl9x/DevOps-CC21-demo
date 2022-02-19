@@ -49,19 +49,26 @@ spec:
         run: nginx
     spec:
       containers:
-        - name: nginx
-          image: l9xhub/nginx:latest
-          volumeMounts:
-            - mountPath: "/site"
-              name: hostpath-privileged
-            - mountPath: /var/log/nginx
-              name: logs-volume
-            - name: nginx-conf
-              mountPath: /etc/nginx/conf.d/wordpress.conf
-              subPath: wordpress.conf
-              readOnly: true
-          ports:
-            - containerPort: 80
+      - name: nginx
+        image: l9xhub/nginx:latest
+        volumeMounts:
+        - mountPath: "/site"
+          name: hostpath-privileged
+        - mountPath: /var/log/nginx
+          name: logs-volume
+        - name: nginx-conf
+          mountPath: /etc/nginx/conf.d/wordpress.conf
+          subPath: wordpress.conf
+          readOnly: true
+        ports:
+          - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
       volumes:
         - name: hostpath-privileged
           persistentVolumeClaim:
@@ -93,33 +100,3 @@ spec:
       nodePort: 30001
   selector:
     run: nginx
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: wp-pv-volume
-  namespace: lemp
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: "/mnt/data/site"
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: wp-pv-volume
-  namespace: lemp
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: manual

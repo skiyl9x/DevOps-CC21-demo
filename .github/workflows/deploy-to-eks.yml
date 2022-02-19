@@ -4,7 +4,8 @@ on:
  
   push:
     branches:
-      - 'dev'
+      - 'deploy'
+
   workflow_run:
     workflows: [buid-images-CI]
     types: [completed]
@@ -40,7 +41,7 @@ jobs:
           command: kubectl apply -f k8s
         
     - name: Waiting run pods
-      run: sleep 300
+      run: sleep 1
       
     - name: Deployment status
       uses: koslib/helm-eks-action@master
@@ -71,9 +72,9 @@ jobs:
     - name: Copy site data from dev branch
       uses: koslib/helm-eks-action@master
       env:
-            KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+            KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
           command: |
-                  kubectl pod_name=`kubectl get pod --namespace=lemp -l run=nginx -o jsonpath="{.items[0].metadata.name}"` && \
+                  pod_name=`kubectl get pod --namespace=lemp -l run=nginx -o jsonpath="{.items[0].metadata.name}"` && \
                   kubectl cp data/site lemp/$pod_name:/ && \
                   kubectl exec -i  --namespace=lemp $pod_name -- chown -R www-data:www-data /site
