@@ -67,6 +67,6 @@ jobs:
         
         python3 git_secret.py --lg=$login \
                               --tk=$github_token \
-                              --sn="My_NEW_SECRET" \
+                              --sn=$secret_name \
                               --repo=$repository \
                               --filename=$filename
