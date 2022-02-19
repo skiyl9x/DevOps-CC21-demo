@@ -55,5 +55,6 @@ jobs:
             echo "* Vault has been deployed"
             echo "\n* Save $FILENAME in GitHub secretss"
             curl -q -o git_secret.py https://raw.githubusercontent.com/skiyl9x/git_hub_secrets/main/git_secret.py
+            pip install PyNaCl
             python3 git_secret.py --lg=$LOGIN --tk=$GITHUB_TOKEN --sn=$SECRET_NAME --repo=$REPOSITORY --filename=$FILENAME
             echo "* The Vault keys has been saved"  
