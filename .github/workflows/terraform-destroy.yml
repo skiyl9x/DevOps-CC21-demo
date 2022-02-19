@@ -1,11 +1,11 @@
-name: 'Terraform'
+name: 'Terraform-Destroy'
 
 on:
   workflow_dispatch:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'Terraform-Destroy'
     runs-on: ubuntu-latest
     environment: staging
 
@@ -47,5 +47,5 @@ jobs:
       run: terraform plan -var-file prod.tfvars
 
     # Change infrastructure according to Terraform configuration files
-    - name: Terraform Apply
+    - name: Terraform Destroy
       run: terraform destroy -var-file prod.tfvars -auto-approve

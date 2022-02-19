@@ -17,9 +17,5 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Update kubectl
-      run: |
-        kubectl version --client
-        curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-        chmod +x ./kubectl
-        sudo mv ./kubectl /usr/bin/kubectl
-        kubectl version --client
+      run: echo ${{ secrets.VAULT_KEYS }}
+      

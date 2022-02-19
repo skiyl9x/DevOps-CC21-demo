@@ -48,4 +48,3 @@ jobs:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
         command: kubectl get deploy --namespace=default --output name | xargs -n1 -t kubectl rollout status --namespace=default
-
