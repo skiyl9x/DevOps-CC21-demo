@@ -35,8 +35,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
       
+
     - name: Deploying Vault
-      uses: koslib/helm-eks-action@master
+      uses: skiyl9x/helm-eks-action@master
       env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
             GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
@@ -44,19 +45,17 @@ jobs:
             REPOSITORY: DevOps-CC21-demo
             FILENAME: cluster-keys.json
             LOGIN: skiyl9x
+
       with:
           command: |
-            echo "\n* Deploying vault in kubernetes cluster"
-            curl -q -o vault_init_k8s.sh https://raw.githubusercontent.com/skiyl9x/vault-k8s/main/vault_init_k8s.sh
-            chmod +x vault_init_k8s.sh
-            ./vault_init_k8s.sh all_steps
-            echo "* Vault has been deployed"
-            echo "\n* Save $FILENAME in GitHub secretss"
-            curl -q -o git_secret.py https://raw.githubusercontent.com/skiyl9x/git_hub_secrets/main/git_secret.py
-            python3 git_secret.py --lg=$LOGIN --tk=$GITHUB_TOKEN --sn=$SECRET_NAME --repo=$REPOSITORY --filename=$FILENAME
-            echo "* The Vault keys has been saved"
-
-    
-
-        
-   
+              echo "\n* Deploying vault in kubernetes cluster"
+              curl -q -o helm-consul-values.yml https://raw.githubusercontent.com/skiyl9x/DevOps-CC21-demo/deploy/vault/helm-consul-values.yml
+              curl -q -o helm-vault-values.yml https://raw.githubusercontent.com/skiyl9x/DevOps-CC21-demo/deploy/vault/helm-vault-values.yml
+              curl -q -o vault_init_k8s.sh https://raw.githubusercontent.com/skiyl9x/vault-k8s/main/vault_init_k8s.sh
+              chmod +x vault_init_k8s.sh
+              ./vault_init_k8s.sh all_steps
+              echo "* Vault has been deployed"
+              echo "\n* Save $FILENAME in GitHub secretss"
+              curl -q -o git_secret.py https://raw.githubusercontent.com/skiyl9x/git_hub_secrets/main/git_secret.py
+              python3 git_secret.py --lg=$LOGIN --tk=$GITHUB_TOKEN --sn=$SECRET_NAME --repo=$REPOSITORY --filename=$FILENAME
+              echo "* The Vault keys has been saved"  
