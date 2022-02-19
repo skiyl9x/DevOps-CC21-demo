@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - 'deploy'
+    paths:
+       - 'k8s/**'
 
   workflow_run:
     workflows: [buid-images-CI]
