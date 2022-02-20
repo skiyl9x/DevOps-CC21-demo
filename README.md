@@ -8,12 +8,12 @@
 
 - [Kubernetes](#kubernetes) 
 - [Terraform](#terraform)
-- [GitHub actions](https://github.com/features/actions)
-- [Vault](https://www.vaultproject.io/)
-- [Prometheus](https://prometheus.io/)
-- [Grafana](https://grafana.com/)
-- [Loki](https://grafana.com/oss/loki/)
-- [Sonarqube](https://www.sonarqube.org/)
+- [GitHub actions](#github-actions)
+- [Vault](#vault)
+- [Prometheus](#prometheus)
+- [Grafana](#grafana)
+- [Loki](#loki)
+- [Sonarqube](#sonarqube)
 ---
 
 <img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100" > 
@@ -80,6 +80,7 @@ Filename | What it does?
 
 <img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" > 
 
+#GitHub actions
 ### Let's talk about GitHub actions
 It is `CI/CD tool` set that help me to release my `infrustructure`. I've choosed `GitHub actions` because it better for me. I don't like :grimacing: updating and monitoring the server with `Jenkins`. I have a lot of resourses that must be `up to date`. 
 
@@ -97,6 +98,7 @@ Filename | What it does?
 
 <img src="https://assets.zabbix.com/img/brands/hashicorp_vault.svg" width="100" height="100" > 
 
+# Vault
 ### How is Vault doing?
 
 As for me it is `best` solution for save any `credentials`. `Vault` have a lot of `autorization methods` and I love :heart_eyes: it. Also this solution is perfect `to protect` your `secure keys` becouse it have many settings. You can create `users` and many `politics` to get access to your creds. I just have started to learn `Vault` and have tiny expertise of it, but I think by improving knowledge of this `tool set` I can could create `safe` infrastructre.  
@@ -105,6 +107,7 @@ As for me it is `best` solution for save any `credentials`. `Vault` have a lot o
 
 <img src="https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png" width="100" height="100" >
 
+# Prometheus
 ### What about Prometheus?
 
 ---
@@ -117,10 +120,12 @@ As for me it is `best` solution for save any `credentials`. `Vault` have a lot o
 
 <img src="https://dashboard.snapcraft.io/site_media/appmedia/2021/11/logo_XCSw33r.png" width="100" height="100" >
 
+# Loki
 ### What about Loki? 
 
 ---
 
 <img src="https://www.sonarqube.org/logos/index/sonarqube-logo.png" width="200" height="100" >
 
+# Sonarqube
 ### Sonarqube?
