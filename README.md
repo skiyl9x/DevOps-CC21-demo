@@ -78,11 +78,14 @@ Filename | What it does?
 ---
 
 ### Let's talk about GitHub actions
-It is `CI/CD tool` set that help me to release my `infrastructure`. I've choosed `GitHub actions` because it better for me. I don't like :grimacing: updating and monitoring the server with `Jenkins`. I have a lot of resourses that must be `up to date`. 
+It is `CI/CD tool` set that help me to release my `infrustructure`. I've choosed `GitHub actions` because it better for me. I don't like :grimacing: updating and monitoring the server with `Jenkins`. I have a lot of resourses that must be `up to date`. 
 
 #### I've created such jobs :gear: :
 
 Filename | What it does? 
 ---------|-------------
-[build-images-CI.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/dev/.github/workflows/build-images-CI.yml) | This job triggers by `push` request to `dev` branch and `build` images with application then push it to `artifactory docker registry`
-[deploy-monitoring.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/deploy-monitoring.yml)
+[build-images-CI.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/dev/.github/workflows/build-images-CI.yml) | This job `build` images with application then push it to `artifactory docker registry`
+[deploy-monitoring.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/deploy-monitoring.yml) | This job deploys monitoring tool set to EKS cluster
+[deploy-to-eks.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/deploy-to-eks.yml) | This job deploys `Nginx`, `MySQL`, `PHP-FPM` and application to `EKS cluser`
+[terraform-apply.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/terraform-apply.yml) | This job improves `infrustructure` in `AWS`
+[terraform-destroy.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/terraform-destroy.yml) | This job deletes `infrustructure` in `AWS`
