@@ -72,3 +72,4 @@ Filename | What it does?
 [prod.tfvars](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/prod.tfvars) | `Variables` that I use in this `terraform IaC`. It is `easy way` becouse you can edit `values` only in `one place`
 [secrets.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/secrets.tf) | Here I describe `secrets` that wil be created in [Amazon Secret Manager](https://aws.amazon.com/secrets-manager/)
 [security-groups.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/security-groups.tf) | `Security groups` for `EC2 instances` that will be created
+[variables.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/variables.tf) | I just announce all `variables` that have been described in `*tfvars` files
