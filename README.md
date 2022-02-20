@@ -44,6 +44,7 @@ I've split all applications to different `namespace`. E.g. `vault` have been imp
 
 <img src="https://avatars.githubusercontent.com/u/28900900?v=4" width="100" height="100" > 
 
+# Terraform
 ### What about Terraform?
 
 It is perfect tool to implement `Infrastracture as Code` that has been developed by [Hashicorp](https://www.hashicorp.com/) company. My infrastracture is described in directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/IaC/terraform).
