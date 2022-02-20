@@ -5,8 +5,8 @@
 [![Deploy monitoring](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml/badge.svg?branch=mon)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml)
 ---
 This project consists of such tools:
-- Kubernetes
-- Terraform
+- `Kubernetes`
+- `Terraform`
 - GitHub actions
 - Vault
 - Prometheus
