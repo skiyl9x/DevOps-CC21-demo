@@ -82,3 +82,6 @@ It is `CI/CD tool` set that help me to release my `infrastructure`. I've choosed
 
 #### I've created such jobs :gear: :
 
+Filename | What it does? 
+---------|-------------
+[build-images-CI.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/main/.github/workflows/build-images-CI.yml) | This job triggers by `push` request to `dev` branch and `build` images with application then push it to `artifactory docker registry`
