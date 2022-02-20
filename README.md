@@ -1,5 +1,5 @@
 # My demo project in DevOps Crash Course 2022. 
-<img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100" ><img src="https://avatars.githubusercontent.com/u/28900900?v=4" width="100" height="100" ><img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" ><img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100" ><img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100" >
+<img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100" ><img src="https://avatars.githubusercontent.com/u/28900900?v=4" width="100" height="100" ><img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" ><img src="https://www.drupal.org/files/project-images/Vault_VerticalLogo_FullColor.png" width="100" height="100" ><img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100" >
 
 
 [![buid-images-CI](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml/badge.svg)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml)
