@@ -74,3 +74,4 @@ Filename | What it does?
 [security-groups.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/security-groups.tf) | `Security groups` for `EC2 instances` that will be created
 [variables.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/variables.tf) | I just announce all `variables` that have been described in `*tfvars` files
 [versions.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/versions.tf) | Here just describes `versions of resourses` that are used in this `infrastracture`
+[vpc.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/vpc.tf) | I use [VPC module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) to work with `VPC` in `AWS`
