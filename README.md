@@ -1,5 +1,5 @@
 # My demo project in DevOps Crash Course 2022
-         <img src="https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png" width="100" height="100" >   <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" > <img src="https://dashboard.snapcraft.io/site_media/appmedia/2021/11/logo_XCSw33r.png" width="100" height="100" > <img src="https://www.sonarqube.org/logos/index/sonarqube-logo.png" width="200" height="100" >
+            <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" > <img src="https://dashboard.snapcraft.io/site_media/appmedia/2021/11/logo_XCSw33r.png" width="100" height="100" > <img src="https://www.sonarqube.org/logos/index/sonarqube-logo.png" width="200" height="100" >
 
 GitHub actions job status: [![buid-images-CI](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml/badge.svg)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml)
 [![Terraform-Apply](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/terraform-apply.yml/badge.svg)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/terraform-apply.yml)
@@ -104,3 +104,8 @@ Filename | What it does?
 
 ### How is Vault doing?
 As for me it is `best` solution for save any `credentials`. `Vault` have a lot of `autorization methods` and I love :heart_eyes: it. Also this solution is perfect `to protect` your `secure keys` becouse it have many settings. You can create `users` and many `politics` to get access to your creds. I just have started to learn `Vault` and have tiny expertise of it, but I think by improving knowledge of this `tool set` I can could create `safe` infrastructre.  
+---
+
+<img src="https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png" width="100" height="100" >
+
+### What about Prometheus?
