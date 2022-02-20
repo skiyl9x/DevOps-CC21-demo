@@ -23,11 +23,15 @@ This project consists of such tools:
   - Statefulset
   - Secret
 
-* I've choosed `nginx` with `php-fpm` for implemention the web application `WordPress`, becouse it's better for big loads and easier for settings like bot blocking via nginx, writting seo friendly URLs, load balancing. Also `nginx` uses less memory then `Apache`. Site data in files have been saved in `Persistent Volume`, that available for all nginx replicas. 
-* `Service` is used for port exposing and for setuping networking.
-* I've split all applications to different `namespace`. E.g. `vault` have been implemented in the `vault` namespace, `mysql` application - in the `database` namespace, `nginx` and `php-fpm` - in the `lemp` namespace, `grafana` and `prometheus` and `loki` - in the monitoring namespace.
-* `MySQL` have been implemented by using `statefulset`, becouse all data must be in safe.
-* `Secret` have been used for templorary save secrets. In future it will be saved in `Vault`. 
+I've choosed `nginx` with `php-fpm` for implemention the web application `WordPress`, becouse it's better for big loads and easier for settings like bot blocking via nginx, writting seo friendly URLs, load balancing. Also `nginx` uses less memory then `Apache`. Site data in files have been saved in `Persistent Volume`, that available for all nginx replicas. 
+
+`Service` is used for port exposing and for setuping networking.
+
+I've split all applications to different `namespace`. E.g. `vault` have been implemented in the `vault` namespace, `mysql` application - in the `database` namespace, `nginx` and `php-fpm` - in the `lemp` namespace, `grafana` and `prometheus` and `loki` - in the monitoring namespace.
+
+`MySQL` have been implemented by using `statefulset`, becouse all data must be in safe.
+
+`Secret` have been used for templorary save secrets. In future it will be saved in `Vault`. 
 
 
 
