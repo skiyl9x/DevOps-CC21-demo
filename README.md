@@ -9,7 +9,7 @@
 ### This project consists of such tools:
 [An Internal Link to a Section Heading](/guides/content/editing-an-existing-page#modifying-front-matter)
 
-- [Kubernetes](##Let's start from [kubernetes]) 
+- [Kubernetes](##Let's start from) 
 - [Terraform](https://www.terraform.io/)
 - [GitHub actions](https://github.com/features/actions)
 - [Vault](https://www.vaultproject.io/)
