@@ -64,3 +64,4 @@ Let's parse this files :grinning:
 Filename | What it does? 
 ---------|-------------
 [backend.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/backend.tf) | `Backend of terraform`. Here I describe where terraform will save him `tfstate` file. I use [S3 bucket](https://aws.amazon.com/s3/) in `AWS`
+[data.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/data.tf) | I use it for iformation data from AWS, e.g. eks cluster id, list of availability zones
