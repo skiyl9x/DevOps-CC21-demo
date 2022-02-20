@@ -7,7 +7,6 @@
 ---
 
 ### This project consists of such tools:
-[An Internal Link to a Section Heading](/guides/content/editing-an-existing-page#modifying-front-matter)
 
 - [Kubernetes](#kubernetes) 
 - [Terraform](https://www.terraform.io/)
@@ -22,6 +21,7 @@
 <img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100" > 
 
 #kubernetes
+
 ### Let's start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/deploy/k8s) in [AWS](https://aws.amazon.com/) named [EKS](https://aws.amazon.com/eks/)
   I've used such abstractions as:
   - `Deployment`
