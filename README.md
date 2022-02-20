@@ -9,7 +9,7 @@
 ### This project consists of such tools:
 
 - [Kubernetes](#kubernetes) 
-- [Terraform](https://www.terraform.io/)
+- [Terraform](#terraform)
 - [GitHub actions](https://github.com/features/actions)
 - [Vault](https://www.vaultproject.io/)
 - [Prometheus](https://prometheus.io/)
