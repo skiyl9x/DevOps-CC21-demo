@@ -69,17 +69,17 @@ You can see such files in this folder:
 Filename | What it does? 
 ---------|-------------
 [backend.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/backend.tf) | `Backend of terraform`. Here I describe where terraform will save him `tfstate` file. I use [S3 bucket](https://aws.amazon.com/s3/) in `AWS`
-[data.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/data.tf) | I use it to get iformation from `AWS`, e.g. `eks cluster id`, list of `availability zones`
-[eks-cluster.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/eks-cluster.tf) | `EKS module` is described here with such information as: `cluser name`, `worker groups`, type of `ec2`, `subnets` etc.
-[kubernetes.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/kubernetes.tf) | Here I include `kubernetes provider`
-[main.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/main.tf) | It is `MAIN` terraform file. Here I just set `aws provider`, describe `local variables` and write my `tags`
-[outputs.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/outputs.tf) | I use this file for describe `information` that will be displayed after `infrastracture` creation
-[prod.tfvars](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/prod.tfvars) | `Variables` that I use in this `terraform IaC`. It is `easy way` becouse you can edit `values` only in `one place`
-[secrets.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/secrets.tf) | Here I describe `secrets` that wil be created in [Amazon Secret Manager](https://aws.amazon.com/secrets-manager/)
-[security-groups.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/security-groups.tf) | `Security groups` for `EC2 instances` that will be created
-[variables.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/variables.tf) | I just announce all `variables` that have been described in `*tfvars` files
-[versions.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/versions.tf) | Here just describes `versions of resourses` that are used in this `infrastracture`
-[vpc.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/vpc.tf) | I use [VPC module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) to work with `VPC` in `AWS`
+[data.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/data.tf) | I use it to get iformation from `AWS`, e.g. `eks cluster id`, list of `availability zones`
+[eks-cluster.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/eks-cluster.tf) | `EKS module` is described here with such information as: `cluser name`, `worker groups`, type of `ec2`, `subnets` etc.
+[kubernetes.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/kubernetes.tf) | Here I include `kubernetes provider`
+[main.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/main.tf) | It is `MAIN` terraform file. Here I just set `aws provider`, describe `local variables` and write my `tags`
+[outputs.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/outputs.tf) | I use this file for describe `information` that will be displayed after `infrastracture` creation
+[prod.tfvars](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/prod.tfvars) | `Variables` that I use in this `terraform IaC`. It is `easy way` becouse you can edit `values` only in `one place`
+[secrets.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/secrets.tf) | Here I describe `secrets` that wil be created in [Amazon Secret Manager](https://aws.amazon.com/secrets-manager/)
+[security-groups.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/security-groups.tf) | `Security groups` for `EC2 instances` that will be created
+[variables.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/variables.tf) | I just announce all `variables` that have been described in `*tfvars` files
+[versions.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/versions.tf) | Here just describes `versions of resourses` that are used in this `infrastracture`
+[vpc.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/vpc.tf) | I use [VPC module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) to work with `VPC` in `AWS`
 ---
 
 <img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" > 
