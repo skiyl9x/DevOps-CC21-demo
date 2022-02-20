@@ -69,3 +69,4 @@ Filename | What it does?
 [kubernetes.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/kubernetes.tf) | Here I include `kubernetes provider`
 [main.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/main.tf) | It is `MAIN` terraform file. Here I just set `aws provider`, describe `local variables` and write my `tags`
 [outputs.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/outputs.tf) | I use this file for describe `information` that will be displayed after `infrastracture` creation
+[prod.tfvars](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/prod.tfvars) | `Variables` that I use in this `terraform IaC`. It is `easy way` becouse you can edit `values` only in `one place`
