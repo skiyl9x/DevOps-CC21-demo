@@ -1,4 +1,5 @@
-# Here is my demo project in DevOps Crash Course 2022. It consist of such elements:
+# My demo project in DevOps Crash Course 2022. 
+It consist of such elements:
 - [terraform] folder
 
 [![buid-images-CI](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml/badge.svg)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml)
