@@ -9,7 +9,7 @@ It consists of such tools:
 - Loki
 - Sonarqube
 ---
-### h3 Let start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s)
+### Let start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s)
   I've used such abstractions as:
   - Deployment
   - Service
