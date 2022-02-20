@@ -5,9 +5,9 @@
 [![Deploy monitoring](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml/badge.svg?branch=mon)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml)
 ---
 
-This project consists of such tools:
+<img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="75" height="75"> 
 
-<img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="50" height="50"> 
+This project consists of such tools:
 
 - [Kubernetes](https://kubernetes.io/) 
 - [Terraform](https://www.terraform.io/)
