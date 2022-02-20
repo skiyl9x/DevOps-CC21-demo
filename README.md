@@ -8,7 +8,7 @@ GitHub actions job status [![buid-images-CI](https://github.com/skiyl9x/DevOps-C
 [![Deploy monitoring](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml/badge.svg?branch=mon)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml)
 ---
 
-## This project consists of such tools:
+### This project consists of such tools:
 
 - [Kubernetes](https://kubernetes.io/) 
 - [Terraform](https://www.terraform.io/)
@@ -19,7 +19,7 @@ GitHub actions job status [![buid-images-CI](https://github.com/skiyl9x/DevOps-C
 - [Loki](https://grafana.com/oss/loki/)
 - [Sonarqube](https://www.sonarqube.org/)
 ---
-## Let's start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s) in [AWS](https://aws.amazon.com/) named [EKS](https://aws.amazon.com/eks/)
+### Let's start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s) in [AWS](https://aws.amazon.com/) named [EKS](https://aws.amazon.com/eks/)
   I've used such abstractions as:
   - `Deployment`
   - `Service`
