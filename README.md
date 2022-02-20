@@ -32,8 +32,8 @@ I've split all applications to different `namespace`. E.g. `vault` have been imp
 `MySQL` have been implemented by using `statefulset`, becouse all data must be in safe.
 
 `Secret` have been used for templorary save secrets. In future it will be saved in `Vault`. 
-
-
+---
+How about `Terraform`?
 
 
 My project: https://github.com/skiyl9x/DevOps-CC21-demo
