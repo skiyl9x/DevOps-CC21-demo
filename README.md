@@ -5,7 +5,7 @@
 [![Deploy monitoring](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml/badge.svg?branch=mon)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml)
 ---
 This project consists of such tools:
-- `Kubernetes`
+- `kubernetes`
 - `Terraform`
 - `GitHub actions`
 - `Vault`
@@ -14,7 +14,7 @@ This project consists of such tools:
 - `Loki`
 - `Sonarqube`
 ---
-### Let start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s)
+### Let start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s) in `AWS` named `EKS`
   I've used such abstractions as:
   - `Deployment`
   - `Service`
@@ -35,6 +35,8 @@ I've split all applications to different `namespace`. E.g. `vault` have been imp
 
 ---
 ### How about `Terraform`?
+
+I
 
 
 My project: https://github.com/skiyl9x/DevOps-CC21-demo
