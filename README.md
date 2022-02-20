@@ -40,7 +40,7 @@ It is perfect tool to implement `Infrastracture as Code` that has been developed
 
 In short I've used [EKS](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) - module that has been desired by Hashicorp to work with [Elastic Kubernetis Service](https://aws.amazon.com/eks/) in Amazon. Also I have used such resourses as: 
 
-AWS resourse  | Why?
+AWS resourses  | Why?
 ------------- | -------------
 [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) | To create infrastructure `network`. I've used several `subnets` and one [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)
 [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/) | To balace `network load`, to take one `IP address` through witch all traffic will be pass
