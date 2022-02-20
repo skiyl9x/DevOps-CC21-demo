@@ -37,7 +37,7 @@ I've split all applications to different `namespace`. E.g. `vault` have been imp
 ### How about `Terraform`?
 
 It is perfect tool to implement `Infrastracture as Code` that has been developed by [Hashicorp](https://www.hashicorp.com/) company. My infrastracture is described in directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform)
-In short. I've used EKS - module that has been desired by Hashicorp to work with [Elastic Kubernetis Service] https://aws.amazon.com/eks/ in Amazon
+In short. I've used EKS - module that has been desired by Hashicorp to work with [Elastic Kubernetis Service] (https://aws.amazon.com/eks/) in Amazon
 
 
 My project: https://github.com/skiyl9x/DevOps-CC21-demo
