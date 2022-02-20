@@ -103,4 +103,4 @@ Filename | What it does?
 <img src="https://assets.zabbix.com/img/brands/hashicorp_vault.svg" width="100" height="100" > 
 
 ### How is Vault doing?
-As for me it is best solution for save any credentials. Vault have a lot of autorization methods and I love :heart_eyes: it.
+As for me it is `best` solution for save any `credentials`. `Vault` have a lot of `autorization methods` and I love :heart_eyes: it. Also this solution is perfect `to protect` your `secure keys` becouse it have many settings. You can create `users` and many `politics` to get access to your creds. I just have started to learn `Vault` and have tiny expertise of it, but I think by improving knowledge of this `tool set` I can could create `safety` infrastructre.  
