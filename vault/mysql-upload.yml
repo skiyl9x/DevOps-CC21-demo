@@ -14,7 +14,12 @@ metadata:
         MYSQL_USER={{ .Data.data.MYSQL_USER}}
         MYSQL_PASSWORD={{ .Data.data.MYSQL_PASSWORD }}
 
-        mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$HOST $MYSQL_DATABASE
+        mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -h$HOST $MYSQL_DATABASE < /wordpress.sql
+        if [ "$?" -eq 0 ]; then
+          echo "mysql-dump has been imported succesfully!"
+        else
+          echo "ERROR $?: can't import mysql-dump"
+        fi
         {{- end -}}
 spec:
   serviceAccountName: vault-mysql-sa
@@ -22,5 +27,5 @@ spec:
   - name: mysql-container
     image: l9xhub/wp-database:stable
     args:
-      ['sh', '-c', 'tail -f /dev/null']
-    imagePullPolicy: IfNotPresent
+      ['sh', '-c', 'sh /vault/secrets/upload.sh && tail -f /dev/null']
+    imagePullPolicy: Always
