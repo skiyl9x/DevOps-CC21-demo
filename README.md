@@ -20,7 +20,7 @@
 - [Loki](https://grafana.com/oss/loki/)
 - [Sonarqube](https://www.sonarqube.org/)
 ---
-### Let's start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s) in `AWS` named `EKS`
+### Let's start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s) in [AWS](https://aws.amazon.com/) named [EKS](https://aws.amazon.com/eks/)
   I've used such abstractions as:
   - `Deployment`
   - `Service`
