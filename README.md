@@ -40,7 +40,7 @@ I've split all applications to different `namespace`. E.g. `vault` have been imp
 `Secret` have been used for templorary save secrets. In future it will be saved in `Vault`. 
 
 ---
-### How about `Terraform`?
+### What about `Terraform`?
 
 It is perfect tool to implement `Infrastracture as Code` that has been developed by [Hashicorp](https://www.hashicorp.com/) company. My infrastracture is described in directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform).
 
