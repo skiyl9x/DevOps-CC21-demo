@@ -78,4 +78,5 @@ Filename | What it does?
 ---
 
 ### Let's talk about GitHub actions
-It is `CI/CD tool` set that help me to release my `infrastructure`
+It is `CI/CD tool` set that help me to release my `infrastructure`. I've choosed `GitHub actions` because it better for me. I don't like updating and monitoring the server with `Jenkins`. I have a lot of resourses that must be `up to date`. 
+
