@@ -56,7 +56,7 @@ AWS resourses  | Why?
 [EC2 Auto scaling groups](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html) | Set of parameters for grouping `EC2` instances and `auto scaling` them by some reasone
 [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) | `Network Address Translation` service to get access to internet for `EC2` instances from `private` network
 
-And now I will tell you about my file structure in the directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform). 
+#### And now I will tell you about my file structure in the directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform). 
 
 My project: https://github.com/skiyl9x/DevOps-CC21-demo
 
