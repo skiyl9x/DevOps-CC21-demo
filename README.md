@@ -80,7 +80,7 @@ Filename | What it does?
 
 <img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" > 
 
-#GitHub actions
+# GitHub actions
 ### Let's talk about GitHub actions
 It is `CI/CD tool` set that help me to release my `infrustructure`. I've choosed `GitHub actions` because it better for me. I don't like :grimacing: updating and monitoring the server with `Jenkins`. I have a lot of resourses that must be `up to date`. 
 
