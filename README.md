@@ -57,7 +57,7 @@ AWS resourses  | Why?
 [NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) | `Network Address Translation` service to get access to internet for `EC2` instances from `private` network
 
 
-#### * And now I will tell you about my `file structure` in the directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform). 
+* And now I will tell you about my `file structure` in the directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform). 
 You can see such files in this folder:
 ```
 -rw-rw-r-- 1 skiyl9x skiyl9x  231 Feb 20 23:10 backend.tf
