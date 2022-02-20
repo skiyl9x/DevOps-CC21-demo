@@ -5,7 +5,7 @@
 [![Deploy monitoring](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml/badge.svg?branch=mon)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/deploy-monitoring.yml)
 ---
 This project consists of such tools:
-- [Kubernetes](https://kubernetes.io/) ![kubernetes](https://cdn.freelogovectors.net/svg05/kubernetes-logo.svg)
+- [Kubernetes](https://kubernetes.io/) ![kubernetes](https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico)
 - [Terraform](https://www.terraform.io/)
 - [GitHub actions](https://github.com/features/actions)
 - [Vault](https://www.vaultproject.io/)
