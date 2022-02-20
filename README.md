@@ -51,6 +51,7 @@ AWS resourses  | Why?
 [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/) | To balace `network load`, to take one `IP address` through witch all traffic will be pass
 [Elastic Computing Cloud](https://aws.amazon.com/ec2/) | Good solution to create `cluster` with `worker nodes`
 [Simple Cloud Storage](https://aws.amazon.com/s3/) | Perfect solution to take [terraform state file](https://www.terraform.io/language/state) in safe
+[EC2 security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html) | Security groups for EC2 instances with ingress and egress rules
 
 
 My project: https://github.com/skiyl9x/DevOps-CC21-demo
