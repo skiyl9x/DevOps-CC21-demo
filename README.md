@@ -61,11 +61,7 @@ AWS resourses  | Why?
 
 
 #### And now I will tell you about my `file structure` in the directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform). 
-You can see such files in this folder:
 
-<img src="https://raw.githubusercontent.com/skiyl9x/DevOps-CC21-demo/doc/images/terraform_tree.png">
-
-#### Let's parse this files :grinning:
 Filename | What it does? 
 ---------|-------------
 [backend.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/terraform/backend.tf) | `Backend of terraform`. Here I describe where terraform will save him `tfstate` file. I use [S3 bucket](https://aws.amazon.com/s3/) in `AWS`
