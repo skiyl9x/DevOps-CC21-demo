@@ -1,6 +1,6 @@
 # My demo project in DevOps Crash Course 2022. 
 It consists of such tools:
-- Kubernetes
+* Kubernetes
 - Terraform
 - GitHub actions
 - Vault
