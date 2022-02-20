@@ -90,8 +90,8 @@ Filename | What it does?
 [build-images-CI.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/dev/.github/workflows/build-images-CI.yml) | This job `build` images with application then push it to `artifactory docker registry`
 [deploy-monitoring.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/deploy-monitoring.yml) | This job deploys monitoring tool set to EKS cluster
 [deploy-to-eks.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/deploy-to-eks.yml) | This job deploys `Nginx`, `MySQL`, `PHP-FPM` and application to `EKS cluser`
-[terraform-apply.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/terraform-apply.yml) | This job improves `infrustructure` in `AWS`
-[terraform-destroy.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/terraform-destroy.yml) | This job deletes `infrustructure` in `AWS`
+[terraform-apply.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/.github/workflows/terraform-apply.yml) | This job improves `infrustructure` in `AWS`
+[terraform-destroy.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/.github/workflows/terraform-destroy.yml) | This job deletes `infrustructure` in `AWS`
 [deploy-vault-to-eks.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/deploy-vault-to-eks.yml) | This job deploys `vault` to `EKS cluster`
 ---
 
