@@ -78,3 +78,4 @@ Filename | What it does?
 ---
 
 ### Let's talk about GitHub actions
+It is `CI/CD tool` set that help me to release my `infrastructure`
