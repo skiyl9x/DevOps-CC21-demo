@@ -20,7 +20,7 @@ spec:
   serviceAccountName: vault-mysql-sa
   containers:
   - name: mysql-container
-    image: imega/mysql-client
+    image: l9xhub/wp-database:stable
     args:
       ['sh', '-c', 'tail -f /dev/null']
     imagePullPolicy: IfNotPresent
