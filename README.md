@@ -7,7 +7,7 @@
 
 This project consists of such tools:
 
-<img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100"> 
+<img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="50" height="50"> 
 
 - [Kubernetes](https://kubernetes.io/) 
 - [Terraform](https://www.terraform.io/)
