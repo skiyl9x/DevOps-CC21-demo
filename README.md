@@ -8,7 +8,7 @@
 
 ### This project consists of such tools:
 
-- [Kubernetes](#-kubernetes) 
+- [Kubernetes](#-Kubernetes) 
 - [Terraform](https://www.terraform.io/)
 - [GitHub actions](https://github.com/features/actions)
 - [Vault](https://www.vaultproject.io/)
