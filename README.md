@@ -103,3 +103,4 @@ Filename | What it does?
 <img src="https://assets.zabbix.com/img/brands/hashicorp_vault.svg" width="100" height="100" > 
 
 ### How is Vault doing?
+As for me it is best solution for save any credentials. Vault have a lot of autorization methods and I love :heart_eyes: it.
