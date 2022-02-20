@@ -59,4 +59,4 @@ AWS resourses  | Why?
 
 ### And now I will tell you about my `file structure` in the directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform). 
 You can see such files in this folder:
-<img src="https://raw.githubusercontent.com/skiyl9x/DevOps-CC21-demo/doc/images/terraform_tree.png" > 
+<img src="https://raw.githubusercontent.com/skiyl9x/DevOps-CC21-demo/doc/images/terraform_tree.png"> 
