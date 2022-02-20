@@ -1,0 +1,42 @@
+name: 'buid-images-CI'
+
+on:
+  push:
+    branches:
+      - 'dev'
+jobs:
+
+  build-CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: getfile
+        run: |
+          echo "::set-output name=files::$(git diff-tree \
+          --no-commit-id --name-only -r ${{ github.sha }}\
+          | grep Dockerfile | xargs )"
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push images
+        run: |
+          GREEN='\033[0;32m'
+          NC='\033[0m'
+          for path in ${{ steps.getfile.outputs.files }}
+          do
+            name=`dirname $path`
+            tag="${{ secrets.DOCKERHUB_USERNAME }}/$name:latest"
+            docker build -t $tag $name
+            printf "${GREEN}* Image $name has built successfully${NC}\n"
+            docker push $tag
+            printf "${GREEN}* Image $name has pushed successfully${NC}\n"
+          done

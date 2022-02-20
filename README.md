@@ -128,3 +128,4 @@ As for me it is `best` solution for save any `credentials`. `Vault` have a lot o
 <img src="https://www.sonarqube.org/logos/index/sonarqube-logo.png" width="200" height="100" >
 
 ### Sonarqube?
+
