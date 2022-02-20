@@ -1,5 +1,5 @@
 # My demo project in DevOps Crash Course 2022
-   <img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" >    <img src="https://assets.zabbix.com/img/brands/hashicorp_vault.svg" width="100" height="100" >    <img src="https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png" width="100" height="100" >   <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" > <img src="https://dashboard.snapcraft.io/site_media/appmedia/2021/11/logo_XCSw33r.png" width="100" height="100" > <img src="https://www.sonarqube.org/logos/index/sonarqube-logo.png" width="200" height="100" >
+      <img src="https://assets.zabbix.com/img/brands/hashicorp_vault.svg" width="100" height="100" >    <img src="https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png" width="100" height="100" >   <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" > <img src="https://dashboard.snapcraft.io/site_media/appmedia/2021/11/logo_XCSw33r.png" width="100" height="100" > <img src="https://www.sonarqube.org/logos/index/sonarqube-logo.png" width="200" height="100" >
 
 GitHub actions job status: [![buid-images-CI](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml/badge.svg)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml)
 [![Terraform-Apply](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/terraform-apply.yml/badge.svg)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/terraform-apply.yml)
@@ -82,6 +82,8 @@ Filename | What it does?
 [versions.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/versions.tf) | Here just describes `versions of resourses` that are used in this `infrastracture`
 [vpc.tf](https://github.com/skiyl9x/DevOps-CC21-demo/blob/IaC/vpc.tf) | I use [VPC module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest) to work with `VPC` in `AWS`
 ---
+
+<img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" > 
 
 ### Let's talk about GitHub actions
 It is `CI/CD tool` set that help me to release my `infrustructure`. I've choosed `GitHub actions` because it better for me. I don't like :grimacing: updating and monitoring the server with `Jenkins`. I have a lot of resourses that must be `up to date`. 
