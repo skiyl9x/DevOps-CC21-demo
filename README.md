@@ -42,7 +42,7 @@ In short I've used [EKS](https://registry.terraform.io/modules/terraform-aws-mod
 
 AWS resourse  | Why?
 ------------- | -------------
-[VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) | Content Cell
+[VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) | For create infrastructure network. I've used several `subnets` and one `NAT gateway`
 [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/) | Content Cell
 [Elastic Computing Cloud](https://aws.amazon.com/ec2/) | asdsad
 [Simple Cloud Storage](https://aws.amazon.com/s3/) | ad
