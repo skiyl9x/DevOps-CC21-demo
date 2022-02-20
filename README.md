@@ -59,19 +59,4 @@ AWS resourses  | Why?
 
 ### And now I will tell you about my `file structure` in the directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform). 
 You can see such files in this folder:
-
->-rw-rw-r-- 1 skiyl9x skiyl9x  231 Feb 20 23:10 backend.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  223 Feb 20 23:10 data.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  970 Feb 20 23:10 eks-cluster.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  927 Feb 20 23:10 kubernetes.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  468 Feb 20 23:10 main.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  915 Feb 20 23:10 outputs.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  707 Feb 20 23:10 prod.tfvars
--rw-rw-r-- 1 skiyl9x skiyl9x  271 Feb 20 23:10 README.md
--rw-rw-r-- 1 skiyl9x skiyl9x  815 Feb 20 23:10 secrets.tf
--rw-rw-r-- 1 skiyl9x skiyl9x 1451 Feb 20 23:10 security-groups.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  953 Feb 20 23:10 variables.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  528 Feb 20 23:10 versions.tf
--rw-rw-r-- 1 skiyl9x skiyl9x  833 Feb 20 23:10 vpc.tf
-
-
+https://raw.githubusercontent.com/skiyl9x/DevOps-CC21-demo/doc/images/terraform_tree.png
