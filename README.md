@@ -18,7 +18,7 @@ GitHub actions job status: [![buid-images-CI](https://github.com/skiyl9x/DevOps-
 - [Loki](https://grafana.com/oss/loki/)
 - [Sonarqube](https://www.sonarqube.org/)
 ---
-### Let's start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/k8s) in [AWS](https://aws.amazon.com/) named [EKS](https://aws.amazon.com/eks/)
+### Let's start from [kubernetes](https://github.com/skiyl9x/DevOps-CC21-demo/tree/deploy/k8s) in [AWS](https://aws.amazon.com/) named [EKS](https://aws.amazon.com/eks/)
   I've used such abstractions as:
   - `Deployment`
   - `Service`
@@ -40,7 +40,7 @@ I've split all applications to different `namespace`. E.g. `vault` have been imp
 ---
 ### What about `Terraform`?
 
-It is perfect tool to implement `Infrastracture as Code` that has been developed by [Hashicorp](https://www.hashicorp.com/) company. My infrastracture is described in directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/main/terraform).
+It is perfect tool to implement `Infrastracture as Code` that has been developed by [Hashicorp](https://www.hashicorp.com/) company. My infrastracture is described in directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/IaC/terraform).
 
 In short I've used [EKS](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) - module that has been desired by Hashicorp to work with [Elastic Kubernetis Service](https://aws.amazon.com/eks/) in Amazon. Also I have used such resourses as: 
 
@@ -84,4 +84,5 @@ It is `CI/CD tool` set that help me to release my `infrastructure`. I've choosed
 
 Filename | What it does? 
 ---------|-------------
-[build-images-CI.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/main/.github/workflows/build-images-CI.yml) | This job triggers by `push` request to `dev` branch and `build` images with application then push it to `artifactory docker registry`
+[build-images-CI.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/dev/.github/workflows/build-images-CI.yml) | This job triggers by `push` request to `dev` branch and `build` images with application then push it to `artifactory docker registry`
+[deploy-monitoring.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/.github/workflows/deploy-monitoring.yml)
