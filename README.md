@@ -1,5 +1,5 @@
 # My demo project in DevOps Crash Course 2022
-<img src="https://raw.githubusercontent.com/mhausenblas/kubectl-in-action/master/favicon.ico" width="100" height="100" >    <img src="https://avatars.githubusercontent.com/u/28900900?v=4" width="100" height="100" >    <img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" >    <img src="https://assets.zabbix.com/img/brands/hashicorp_vault.svg" width="100" height="100" >    <img src="https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png" width="100" height="100" >   <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" > <img src="https://dashboard.snapcraft.io/site_media/appmedia/2021/11/logo_XCSw33r.png" width="100" height="100" > <img src="https://www.sonarqube.org/logos/index/sonarqube-logo.png" width="200" height="100" >
+   <img src="https://avatars.githubusercontent.com/u/44036562?s=280&v=4" width="100" height="100" >    <img src="https://assets.zabbix.com/img/brands/hashicorp_vault.svg" width="100" height="100" >    <img src="https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png" width="100" height="100" >   <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" > <img src="https://dashboard.snapcraft.io/site_media/appmedia/2021/11/logo_XCSw33r.png" width="100" height="100" > <img src="https://www.sonarqube.org/logos/index/sonarqube-logo.png" width="200" height="100" >
 
 GitHub actions job status: [![buid-images-CI](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml/badge.svg)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/build-images-CI.yml)
 [![Terraform-Apply](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/terraform-apply.yml/badge.svg)](https://github.com/skiyl9x/DevOps-CC21-demo/actions/workflows/terraform-apply.yml)
@@ -41,6 +41,9 @@ I've split all applications to different `namespace`. E.g. `vault` have been imp
 `Secret` have been used for templorary save secrets. In future it will be saved in `Vault`. 
 
 ---
+
+<img src="https://avatars.githubusercontent.com/u/28900900?v=4" width="100" height="100" > 
+
 ### What about `Terraform`?
 
 It is perfect tool to implement `Infrastracture as Code` that has been developed by [Hashicorp](https://www.hashicorp.com/) company. My infrastracture is described in directory [terraform](https://github.com/skiyl9x/DevOps-CC21-demo/tree/IaC/terraform).
