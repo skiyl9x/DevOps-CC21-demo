@@ -80,5 +80,5 @@ Filename | What it does?
 ### Let's talk about GitHub actions
 It is `CI/CD tool` set that help me to release my `infrastructure`. I've choosed `GitHub actions` because it better for me. I don't like :grimacing: updating and monitoring the server with `Jenkins`. I have a lot of resourses that must be `up to date`. 
 
-### I've created such jobs :gear: :
+#### I've created such jobs :gear: :
 
