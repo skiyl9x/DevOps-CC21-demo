@@ -1,4 +1,4 @@
-name: 'buid-images-CI'
+name: 'buid-app-CI'
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - 'data/wordpress.sql'
 jobs:
 
-  build-CI:
+  build-app-CI:
     runs-on: ubuntu-latest
     
     defaults:
