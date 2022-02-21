@@ -9,7 +9,7 @@ on:
        - 'k8s/**'
 
   workflow_run:
-    workflows: [buid-images-CI]
+    workflows: [buid-app-CI]
     types: [completed]
     branches: [dev]
   workflow_dispatch:
