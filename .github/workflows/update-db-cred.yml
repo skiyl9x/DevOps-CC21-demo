@@ -1,4 +1,4 @@
-name: Create/update_credentials_in_vault
+name: create_update_credentials_in_vault
 
 on:
  
