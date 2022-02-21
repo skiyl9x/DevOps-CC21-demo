@@ -1,4 +1,4 @@
-name: Create-update-credentials-in-vault
+name: Update db cred in vault
 
 on:
  
