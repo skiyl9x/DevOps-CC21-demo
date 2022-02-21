@@ -128,7 +128,7 @@ Filename | What it does?
 
 Prometheus have been realised by using this registry [prometheus-community](https://github.com/prometheus-community/helm-charts/). Below you can find commands to install `prometheus` with `grafana` stack
 
-```shell
+```{r, engine='bash', count_lines}
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/kube-prometheus-stack
 ```
@@ -137,9 +137,12 @@ After this you can expose access to grafana by using this command
 ```kubectl port-forward deploy/prometheus-grafana 3000```
 
 The default username and password for grafana are
->user: admin
->pass: prom-operator
-          
+
+```
+user: admin
+pass: prom-operator
+```
+
 ---
 
 <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" >
