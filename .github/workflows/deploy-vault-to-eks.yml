@@ -49,8 +49,6 @@ jobs:
           command: |
               cd vault
               echo "\n* Deploying vault in kubernetes cluster"
-              curl -q -o helm-consul-values.yml https://raw.githubusercontent.com/skiyl9x/DevOps-CC21-demo/deploy/vault/helm-consul-values.yml
-              curl -q -o helm-vault-values.yml https://raw.githubusercontent.com/skiyl9x/DevOps-CC21-demo/deploy/vault/helm-vault-values.yml
               curl -q -o vault_init_k8s.sh https://raw.githubusercontent.com/skiyl9x/vault-k8s/main/vault_init_k8s.sh
               chmod +x vault_init_k8s.sh
               ./vault_init_k8s.sh all_steps
