@@ -128,7 +128,7 @@ Filename | What it does?
 
 Prometheus have been realised by using this registry [prometheus-community](https://github.com/prometheus-community/helm-charts/). Below you can find commands to install `prometheus` with `grafana` stack
 
-```
+```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/kube-prometheus-stack
 ```
