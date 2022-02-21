@@ -134,24 +134,27 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm install prometheus prometheus-community/kube-prometheus-stack
 ```
 
-After this you can expose access to grafana by using this command 
+---
+
+<img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" >
+
+### Grafana? What I can say?
+
+Grafana - it is tool set that give me posiblity to create `dashboards`, to operate `metrix`. I've used standart dashboards created by `prometheus community`.
+After installing `prometheus stack` with `grafana` you can expose access to grafana by using this `COMMAND`:
 
 ```shell
 kubectl port-forward deploy/prometheus-grafana 3000
 ```
 
-The default username and password for grafana are
+The default `username` and `password` for `grafana` are
 
 ```
 user: admin
 pass: prom-operator
 ```
 
----
-
-<img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" >
-
-### Grafana? What I can say?
+In future the credentials must be automatically generated and be saved in the `Vault`
 
 ---
 
