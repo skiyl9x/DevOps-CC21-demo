@@ -30,7 +30,7 @@ jobs:
           GREEN='\033[0;32m'
           NC='\033[0m'
           IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$IMAGE_TAG"
-          docker build -t $IMAGE
+          docker build -t $IMAGE -f Dockerfile-database .
           printf "${GREEN}* Image $IMAGE has built successfully${NC}\n"
           docker push $tag
           printf "${GREEN}* Image $IMAGE has pushed successfully${NC}\n"
