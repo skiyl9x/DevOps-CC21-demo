@@ -1,3 +1,5 @@
 FROM imega/mysql-client:10.6.4
 LABEL maintainer="Alex Shydlovskyi <s k i y l 9 x @ g m a i l . c o m>" description="This is docker image to run a MySQL client and import mysql-dump"
 COPY wordpress.sql /
+
+
