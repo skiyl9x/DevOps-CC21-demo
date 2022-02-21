@@ -110,6 +110,15 @@ The main idea is to save all credentials in one place.
 
 After vault initialization I save `Vault secrets` in GitHub secrets. It have been realized by `Python` sctipt that works with GitHub API. This script available by this [link](https://github.com/skiyl9x/git_hub_secrets/blob/main/git_secret.py) 
 
+In [Vault](https://github.com/skiyl9x/DevOps-CC21-demo/tree/deploy/vault) directory there are such files
+
+Filename | What it does? 
+---------|-------------
+[helm-consul-values.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/vault/helm-consul-values.yml) | Devault values to deploy `consul` by using helm
+[helm-vault-values.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/vault/helm-vault-values.yml) | Default values to deploy `vault` by using helm
+[mysql-config.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/vault/mysql-config.yml) | `YAML` manifest with `Vault` injection. It performs passowrd updating for `MySQL databases`
+[mysql-upload.yml](https://github.com/skiyl9x/DevOps-CC21-demo/blob/deploy/vault/mysql-upload.yml) | `YAML` manifest with `Vault `injection. It performs uploading mysql-dump to database
+
 ---
 
 <img src="https://cdn.iconscout.com/icon/free/png-256/prometheus-282488.png" width="100" height="100" >
