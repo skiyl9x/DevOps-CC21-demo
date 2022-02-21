@@ -138,6 +138,7 @@ helm install prometheus prometheus-community/kube-prometheus-stack
 
 <img src="https://cdn.worldvectorlogo.com/logos/grafana.svg" width="100" height="100" >
 
+# Grafana
 ### Grafana? What I can say?
 
 Grafana - it is tool set that give me posiblity to create `dashboards`, to operate `metrix`. I've used standart dashboards created by `prometheus community`.
