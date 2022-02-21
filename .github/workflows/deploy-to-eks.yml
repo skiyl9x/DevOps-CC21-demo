@@ -12,6 +12,7 @@ on:
     workflows: [buid-app-CI]
     types: [completed]
     branches: [dev]
+
   workflow_dispatch:
     
 env:

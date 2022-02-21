@@ -82,7 +82,7 @@ spec:
               - key: wordpress.conf
                 path: wordpress.conf
       imagePullSecrets:
-      - name: private-registry-cred
+        - name: private-registry-cred
 ---
 apiVersion: v1
 kind: Service
@@ -94,9 +94,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-    nodePort: 30001
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+      nodePort: 30001
   selector:
     run: nginx
