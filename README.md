@@ -179,3 +179,4 @@ helm upgrade --install loki grafana/loki-stack
 # Sonarqube
 ### Sonarqube?
 
+It have not implemented yet. It is waiting in the future releases.
