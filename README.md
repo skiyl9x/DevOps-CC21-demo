@@ -164,7 +164,13 @@ In the future the credentials must be automatically generated and be saved in `V
 ### What about Loki? 
 
 Loki - it is a tool set that give you posibility to collect logs from your cluster and to operate them how you want. 
-I've used this (manual)(https://grafana.com/docs/loki/latest/installation/helm/) to install `Loki` in `kubernetes cluster`
+I've used this [manual](https://grafana.com/docs/loki/latest/installation/helm/) to install `Loki` in `kubernetes cluster`
+The `COMMANDS` have been pasted below:
+```
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+helm upgrade --install loki grafana/loki-stack
+```
 
 ---
 
