@@ -1,0 +1,36 @@
+name: 'buid-images-CI'
+
+on:
+  push:
+    branches:
+      - 'dev'
+    paths:
+      - 'data/*'
+jobs:
+
+  build-CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Build and push images
+        env:
+          IMAGE_NAME: wp-database
+          IMAGE_TAG: stable
+        run: |
+          GREEN='\033[0;32m'
+          NC='\033[0m'
+          IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$IMAGE_TAG"
+          docker build -t $IMAGE
+          printf "${GREEN}* Image $IMAGE has built successfully${NC}\n"
+          docker push $tag
+          printf "${GREEN}* Image $IMAGE has pushed successfully${NC}\n"
