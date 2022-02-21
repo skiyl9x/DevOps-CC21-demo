@@ -126,7 +126,8 @@ Filename | What it does?
 # Prometheus
 ### What about Prometheus?
 
-Prometheus have been realised by using this registry [prometheus-community](https://github.com/prometheus-community/helm-charts/). Below you can find commands to install `prometheus` with `grafana` stack
+[Prometheus](https://prometheus.io/) - it is a solution to collect `metrix` from smth. In my demo - it is `kubernetes cluster`
+Prometheus have been realised by using this registry [prometheus-community](https://github.com/prometheus-community/helm-charts/). Below you can find commands to install stack with `prometheus` and `grafana`
 
 ```shell
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
