@@ -85,7 +85,7 @@ jobs:
       with:
           command: |
                   kubectl apply -f vault/mysql-config.yml
-                  sleep 20
+                  while [[ $(kubectl -n $NAMESPACE_app get pods mysql-configuration -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
                   logs=`kubectl logs --namespace=$NAMESPACE_app mysql-configuration mysql-container`
                   
                   if [ "$logs" = "Information in MySQL DB has changed. Congrats!" ]
@@ -106,7 +106,7 @@ jobs:
       with:
           command: |
                   kubectl apply -f vault/mysql-upload.yml
-                  sleep 20
+                  while [[ $(kubectl -n $NAMESPACE_app get pods mysql-upload -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
                   logs=`kubectl logs --namespace=$NAMESPACE_app mysql-upload mysql-container`
                   if [ "$logs" = "mysql-dump has been imported succesfully!" ]
                   then
