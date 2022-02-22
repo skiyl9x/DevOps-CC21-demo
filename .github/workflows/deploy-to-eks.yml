@@ -105,8 +105,8 @@ jobs:
             NAMESPACE_app: database
       with:
           command: |
-                  kubectl -f vault/mysql-upload.yml
-                  sleep 10
+                  kubectl apply -f vault/mysql-upload.yml
+                  sleep 20
                   logs=`kubectl logs --namespace=$NAMESPACE_app mysql-upload mysql-container`
                   if [ "$logs" = "mysql-dump has been imported succesfully!" ]
                   then
