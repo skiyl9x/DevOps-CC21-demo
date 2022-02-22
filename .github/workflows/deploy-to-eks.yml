@@ -58,7 +58,7 @@ jobs:
       with:
           command: kubectl apply -f k8s/mysql/
 
-    - name: Deploying mysql
+    - name: Check mysql deploying
       uses: koslib/helm-eks-action@master
       env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
