@@ -60,13 +60,13 @@ jobs:
         filename: "kubeconfig"
       with:
           command: |
-                ls -lah
+                cd terraform
                 aws eks --region $(terraform output -raw region) \
                   update-kubeconfig \
                   --name $(terraform output -raw cluster_name) \
-                  --kubeconfig $filename
+                  --kubeconfig $filename &&
                   
-                wget https://raw.githubusercontent.com/skiyl9x/git_hub_secrets/main/git_secret.py
+                wget https://raw.githubusercontent.com/skiyl9x/git_hub_secrets/main/git_secret.py &&
                 python3 git_secret.py --lg=$login \
                               --tk=$github_token \
                               --sn=$secret_name \
