@@ -101,7 +101,7 @@ Filename | What it does?
 # Vault
 ### How is Vault doing?
 
-As for me it is `best` solution for save any `credentials`. `Vault` have a lot of `autorization methods` and I love :heart_eyes: it. Also this solution is perfect `to protect` your `secure keys` becouse it have many settings. You can create `users` and many `politics` to get access to your creds. I just have started to learn `Vault` and have tiny expertise of it, but I think by improving knowledge of this `tool set` I could create `safe` infrastructre.  
+As for me it is `best` solution for save any `credentials`. `Vault` have a lot of `autorization methods` and I like it. Also this solution is perfect `to protect` your `secure keys` becouse it have many settings. You can create `users` and many `politics` to get access to your creds. I just have started to learn `Vault` and have tiny expertise of it, but I think by improving knowledge of this `tool set` I could create `safe` infrastructre.  
 
 I've deployed `Vault` to `Kubernetes` cluster by using this [manual](https://learn.hashicorp.com/tutorials/vault/kubernetes-minikube?in=vault/kubernetes). Bash scripts for initializing `Vault` and adding new keys to `Vault` have been described in this [repository](https://github.com/skiyl9x/vault-k8s). More detailed desctiption about this sctiprs you can find by folowing this [link](https://github.com/skiyl9x/vault-k8s)
 
