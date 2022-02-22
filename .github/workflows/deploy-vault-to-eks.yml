@@ -48,7 +48,6 @@ jobs:
       with:
           command: |
               cd vault
-              echo $KUBE_CONFIG_DATA
               echo "\n* Deploying vault in kubernetes cluster" &&
               curl -q -o vault_init_k8s.sh https://raw.githubusercontent.com/skiyl9x/vault-k8s/main/vault_init_k8s.sh && 
               chmod +x vault_init_k8s.sh &&
