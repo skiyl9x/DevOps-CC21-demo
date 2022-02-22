@@ -49,24 +49,24 @@ jobs:
     # Change infrastructure according to Terraform configuration files
     - name: Terraform Apply
       run: terraform apply -var-file prod.tfvars -auto-approve
-    
-    - name: Update KUBE_CONFIG_DATA_STAGING
-      run: |
-        aws s3 ls
-        login="skiyl9x"
-        github_token=${{ secrets.PERSONAL_GITHUB_TOKEN }}
-        secret_name="KUBE_CONFIG_DATA_STAGING"
-        repository="DevOps-CC21-demo"
-        filename="kubeconfig"
-        
-        aws eks --region $(terraform output -raw region) \
+      
+    - name: Deploying Vault
+      uses: skiyl9x/helm-eks-action@master
+      env:
+        login: "skiyl9x"
+        github_token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+        secret_name: "KUBE_CONFIG_DATA_STAGING"
+        repository: "DevOps-CC21-demo"
+        filename: "kubeconfig"
+      with:
+          command: |
+                aws eks --region $(terraform output -raw region) \
                   update-kubeconfig \
                   --name $(terraform output -raw cluster_name) \
                   --kubeconfig $filename
                   
-        wget https://raw.githubusercontent.com/skiyl9x/git_hub_secrets/main/git_secret.py
-        
-        python3 git_secret.py --lg=$login \
+                wget https://raw.githubusercontent.com/skiyl9x/git_hub_secrets/main/git_secret.py
+                python3 git_secret.py --lg=$login \
                               --tk=$github_token \
                               --sn=$secret_name \
                               --repo=$repository \
