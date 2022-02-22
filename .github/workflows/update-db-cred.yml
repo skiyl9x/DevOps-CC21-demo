@@ -3,7 +3,7 @@ name: Update db cred in vault
 on:
  
   workflow_run:
-    workflows: [Deploy_vault]
+    workflows: [Deploy vault]
     types: [completed]
     branches: [deploy]
   workflow_dispatch:
