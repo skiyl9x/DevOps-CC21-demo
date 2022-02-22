@@ -60,6 +60,7 @@ jobs:
         filename: "kubeconfig"
       with:
           command: |
+                ls -lah
                 aws eks --region $(terraform output -raw region) \
                   update-kubeconfig \
                   --name $(terraform output -raw cluster_name) \
