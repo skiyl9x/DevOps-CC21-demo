@@ -50,7 +50,7 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -var-file prod.tfvars -auto-approve
       
-    - name: Deploying Vault
+    - name: Save kubeconfig to secret
       uses: skiyl9x/helm-eks-action@master
       env:
         login: "skiyl9x"
