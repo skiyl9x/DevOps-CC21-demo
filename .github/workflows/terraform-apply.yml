@@ -64,8 +64,8 @@ jobs:
                 aws eks --region $(terraform output -raw region) \
                   update-kubeconfig \
                   --name $(terraform output -raw cluster_name) \
-                  --kubeconfig $filename &&
-                  
+                  --kubeconfig tmp_file &&
+                cat tmp_file | base64 > $filename
                 wget https://raw.githubusercontent.com/skiyl9x/git_hub_secrets/main/git_secret.py &&
                 python3 git_secret.py --lg=$login \
                               --tk=$github_token \
