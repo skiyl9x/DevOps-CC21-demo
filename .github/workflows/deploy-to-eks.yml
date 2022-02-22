@@ -45,21 +45,21 @@ jobs:
       run: sleep 1
       
     - name: Deploy nginx+php-fpm status
-      uses: koslib/helm-eks-action@master
+      uses: skiyl9x/helm-eks-action@master
       env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
         command: kubectl get deploy --namespace=lemp --output name | xargs -n1 -t kubectl rollout status --namespace=lemp
     
     - name: Deploying mysql
-      uses: koslib/helm-eks-action@master
+      uses: skiyl9x/helm-eks-action@master
       env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
           command: kubectl apply -f k8s/mysql/
 
     - name: Check mysql deploying
-      uses: koslib/helm-eks-action@master
+      uses: skiyl9x/helm-eks-action@master
       env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
             NAMESPACE_app: database
@@ -78,7 +78,7 @@ jobs:
                   ./vault_add_new_key_k8s.sh all_steps
 
     - name: Update credentials
-      uses: koslib/helm-eks-action@master
+      uses: skiyl9x/helm-eks-action@master
       env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
             NAMESPACE_app: database
@@ -95,18 +95,17 @@ jobs:
                   else
                     echo $logs
                     kubectl delete -f vault/mysql-config.yml
-                    exit 2
                   fi
 
     - name: Upload database
-      uses: koslib/helm-eks-action@master
+      uses: skiyl9x/helm-eks-action@master
       env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
             NAMESPACE_app: database
       with:
           command: |
                   kubectl apply -f vault/mysql-upload.yml
-                  while [[ $(kubectl -n $NAMESPACE_app get pods mysql-upload -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
+                  sleep 10
                   logs=`kubectl logs --namespace=$NAMESPACE_app mysql-upload mysql-container`
                   if [ "$logs" = "mysql-dump has been imported succesfully!" ]
                   then
@@ -115,7 +114,6 @@ jobs:
                   else
                     echo $logs
                     kubectl delete -f vault/mysql-upload.yml
-                    exit 2
                   fi
     
   upload-files:
@@ -138,7 +136,7 @@ jobs:
         aws-region: ${{ env.AWS_REGION }}
         
     - name: Copy site data from dev branch
-      uses: koslib/helm-eks-action@master
+      uses: skiyl9x/helm-eks-action@master
       env:
             KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
       with:
