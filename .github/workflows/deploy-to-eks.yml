@@ -66,6 +66,17 @@ jobs:
       with:
           command: kubectl -n $NAMESPACE_app rollout status statefulset/mysql-set
 
+    - name: Generate new db key in vault
+      uses: skiyl9x/helm-eks-action@master
+      env:
+            KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+            VAULT_KEYS: ${{ secrets.VAULT_KEYS }}
+      with:
+          command: |
+                  curl -q -o vault_add_new_key_k8s.sh https://raw.githubusercontent.com/skiyl9x/vault-k8s/main/vault_add_new_key_k8s.sh
+                  chmod +x vault_add_new_key_k8s.sh
+                  ./vault_add_new_key_k8s.sh all_steps
+
     - name: Update credentials
       uses: koslib/helm-eks-action@master
       env:
@@ -79,10 +90,10 @@ jobs:
                   if [ "$logs" = "Information in MySQL DB has changed. Congrats!" ]
                   then
                     echo $logs
-                    kubectl delete -f mysql-config.yml
+                    kubectl delete -f vault/mysql-config.yml
                   else
                     echo $logs
-                    kubectl delete -f mysql-config.yml
+                    kubectl delete -f vault/mysql-config.yml
                     exit 2
                   fi
 
@@ -99,10 +110,10 @@ jobs:
                   if [ "$logs" = "mysql-dump has been imported succesfully!" ]
                   then
                     echo $logs
-                    kubectl delete -f mysql-config.yml
+                    kubectl delete -f vault/mysql-upload.yml
                   else
                     echo $logs
-                    kubectl delete -f mysql-config.yml
+                    kubectl delete -f vault/mysql-upload.yml
                     exit 2
                   fi
     
