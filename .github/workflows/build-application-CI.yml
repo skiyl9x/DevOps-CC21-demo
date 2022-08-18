@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - 'dev'
-    paths:
-      - 'data/Dockerfile-database'
-      - 'data/wordpress.sql'
+#     paths:
+#       - 'data/Dockerfile-database'
+#       - 'data/wordpress.sql'
 jobs:
 
   build-app-CI:
