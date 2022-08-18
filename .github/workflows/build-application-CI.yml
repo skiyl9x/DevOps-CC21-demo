@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'dev'
+      - 'main'
     paths:
       - 'data/Dockerfile-database'
       - 'data/wordpress.sql'
