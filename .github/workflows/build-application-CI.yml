@@ -5,9 +5,9 @@ on:
     branches:
       - 'dev'
       - 'main'
-    paths:
-      - 'data/Dockerfile-database'
-      - 'data/wordpress.sql'
+#     paths:
+#       - 'data/Dockerfile-database'
+#       - 'data/wordpress.sql'
 jobs:
 
   build-app-CI:
